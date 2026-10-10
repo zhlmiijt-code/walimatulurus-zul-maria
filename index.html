@@ -1,0 +1,1111 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Walimatul Urus | Zulhilmi & Maryam</title>
+
+     <!-- Open Graph / Facebook / WhatsApp (Untuk paparan Thumbnail) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Walimatul Urus | Zulhilmi & Maryam">
+    <meta property="og:description" content="Jemputan ke Majlis Perkahwinan Zulhilmi & Maryam pada 5 Disember 2026.">
+    <!-- Gambar thumbnail anda diletakkan di sini -->
+    <meta property="og:image" content="thumbnail.jpg">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- SweetAlert2 -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdfbf7; /* Professional Cream/Ivory Background */
+            color: #3e3838;
+            overflow-x: hidden;
+        }
+
+        .font-serif-luxury {
+            font-family: 'Playfair Display', serif;
+        }
+
+        .font-cursive {
+            font-family: 'Great Vibes', cursive;
+        }
+
+        /* Cover Screen Overlay */
+        #cover-screen {
+            transition: transform 0.9s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.9s ease;
+        }
+
+        #cover-screen.opened {
+            transform: translateY(-100%);
+            opacity: 0;
+            pointer-events: none;
+        }
+
+        /* Reveal animations on scroll */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Music Spin Animation */
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .spin {
+            animation: spin 4s linear infinite;
+        }
+
+        /* Ambient Pulsing Glow Animation - More subtle and professional */
+        @keyframes float-glow {
+            0%, 100% { transform: translateY(0) scale(1); opacity: 0.2; }
+            50% { transform: translateY(-20px) scale(1.05); opacity: 0.4; }
+        }
+
+        .animate-glow-1 { animation: float-glow 8s ease-in-out infinite; }
+        .animate-glow-2 { animation: float-glow 11s ease-in-out infinite 2s; }
+        .animate-glow-3 { animation: float-glow 9s ease-in-out infinite 4s; }
+
+        /* Custom Image Border Class for border.jpg */
+        .theme-border {
+            border-style: solid;
+            /* Adjust the border-width below based on how thick your border.jpg is */
+            border-width: 28px; 
+            border-color: transparent;
+            border-image-source: url('./border.jpg');
+            /* Adjust border-image-slice (usually 30 to 60) to avoid stretching the corners of your image */
+            border-image-slice: 50; 
+            border-image-repeat: round;
+            background-color: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        /* Repeating Luxury Background Pattern Overlay (Subtle) */
+        .luxury-pattern-bg {
+            background-image: radial-gradient(rgba(183, 110, 121, 0.05) 1px, transparent 0);
+            background-position: 0 0;
+            background-size: 30px 30px;
+        }
+
+        /* Background Particle Canvas */
+        #particles-js {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            pointer-events: none;
+        }
+
+        /* Gallery CSS */
+        #gallerySlider {
+            display: flex;
+            width: 100%;
+            touch-action: pan-y;
+            user-select: none;
+            -webkit-user-select: none;
+            cursor: grab;
+        }
+        
+        #gallerySlider:active { cursor: grabbing; }
+
+        .gallery-slide {
+            flex: 0 0 100%;
+            max-width: 100%;
+            padding: 0 4px;
+            box-sizing: border-box;
+        }
+
+        .gallery-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            user-select: none;
+            -webkit-user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
+        }
+
+        .gallery-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            transition: background 0.3s ease, transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .gallery-dot.active {
+            background: #b76e79; /* Rose Gold */
+            transform: scale(1.2);
+        }
+
+        /* Professional Rose Gold Gradient Text */
+        .text-rosegold {
+            background: linear-gradient(to right, #9c5c67, #c5838e);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+    </style>
+</head>
+<body class="relative min-h-screen antialiased luxury-pattern-bg">
+
+    <!-- Subtle Ambient Background Orbs -->
+    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
+        <div class="absolute -top-28 -left-28 w-[28rem] h-[28rem] bg-[#f2e6e1] rounded-full filter blur-3xl animate-glow-1"></div>
+        <div class="absolute top-1/3 -right-28 w-[30rem] h-[30rem] bg-[#f5ebeb] rounded-full filter blur-3xl animate-glow-2"></div>
+        <div class="absolute bottom-10 -left-20 w-96 h-96 bg-[#ede4e4] rounded-full filter blur-3xl animate-glow-1"></div>
+    </div>
+
+    <!-- Particles Background -->
+    <div id="particles-js"></div>
+
+    <!-- Audio Element (Fixed for iOS/Safari Autoplay Issues) -->
+    <audio id="bg-music" loop preload="auto" playsinline>
+        <source src="./lagu-kahwin.mp3" type="audio/mpeg">
+    </audio>
+
+    <!-- Floating Music Toggle Button -->
+    <div id="audio-control" onclick="toggleAudio()" style="display: none;" class="fixed bottom-20 right-4 z-40 bg-white/95 backdrop-blur-md p-3.5 rounded-full shadow-xl cursor-pointer border border-[#e8d5d5] hover:scale-105 transition-transform duration-300 group">
+        <i id="music-icon" class="fas fa-play-circle text-2xl text-[#b76e79] group-hover:text-[#9c5c67]"></i>
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <!-- <div id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 hidden transition-all duration-500">
+        <div class="max-w-md mx-auto bg-white/95 backdrop-blur-lg border-t border-[#e8d5d5] shadow-[0_-10px_25px_rgba(0,0,0,0.05)] px-3 py-2 flex justify-around items-center rounded-t-2xl">
+            <button onclick="openModal('call')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+                <i class="fas fa-phone text-lg text-[#b76e79] mb-0.5"></i>
+                <span class="text-[10px] font-medium tracking-tight">Call</span>
+            </button>
+            <button onclick="openModal('lokasi')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+                <i class="fas fa-location-dot text-lg text-[#b76e79] mb-0.5"></i>
+                <span class="text-[10px] font-medium tracking-tight">Lokasi</span>
+            </button>
+            <button onclick="openModal('rsvp')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+                <i class="fas fa-envelope-open-text text-lg text-[#b76e79] mb-0.5"></i>
+                <span class="text-[10px] font-medium tracking-tight">RSVP</span>
+            </button>
+            <button onclick="openModal('hadiah')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+                <i class="fas fa-gift text-lg text-[#b76e79] mb-0.5"></i>
+                <span class="text-[10px] font-medium tracking-tight">Hadiah</span>
+            </button>
+            <button onclick="openModal('masa')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+                <i class="fas fa-clock text-lg text-[#b76e79] mb-0.5"></i>
+                <span class="text-[10px] font-medium tracking-tight">Masa</span>
+            </button>
+        </div>
+    </div> -->
+<!-- Top Navigation Bar -->
+<!-- <div id="bottom-nav" class="fixed top-3 left-0 right-0 z-40 hidden transition-all duration-500 px-4">
+    <div class="max-w-md mx-auto bg-white/95 backdrop-blur-lg border border-[#e8d5d5] shadow-lg px-3 py-2 flex justify-around items-center rounded-2xl">
+        <button onclick="openModal('call')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+            <i class="fas fa-phone text-lg text-[#b76e79] mb-0.5"></i>
+            <span class="text-[10px] font-medium tracking-tight">Call</span>
+        </button>
+
+        <button onclick="openModal('lokasi')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+            <i class="fas fa-location-dot text-lg text-[#b76e79] mb-0.5"></i>
+            <span class="text-[10px] font-medium tracking-tight">Lokasi</span>
+        </button>
+
+        <button onclick="openModal('rsvp')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+            <i class="fas fa-envelope-open-text text-lg text-[#b76e79] mb-0.5"></i>
+            <span class="text-[10px] font-medium tracking-tight">RSVP</span>
+        </button>
+
+        <button onclick="openModal('hadiah')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+            <i class="fas fa-gift text-lg text-[#b76e79] mb-0.5"></i>
+            <span class="text-[10px] font-medium tracking-tight">Hadiah</span>
+        </button>
+
+        <button onclick="openModal('masa')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+            <i class="fas fa-clock text-lg text-[#b76e79] mb-0.5"></i>
+            <span class="text-[10px] font-medium tracking-tight">Masa</span>
+        </button>
+    </div>
+</div> -->
+<!-- Premium Floating Navigation Bar -->
+<div id="bottom-nav"
+     class="fixed top-3 left-0 right-0 z-40 hidden px-3 transition-all duration-500">
+
+    <nav class="relative max-w-md mx-auto overflow-hidden
+                rounded-2xl border border-white/80
+                bg-white/85 backdrop-blur-xl
+                shadow-[0_8px_30px_rgba(156,92,103,0.16)]">
+
+        <!-- Rose Gold Accent -->
+        <div class="absolute top-0 left-8 right-8 h-[2px]
+                    bg-gradient-to-r from-transparent
+                    via-[#c5838e] to-transparent"></div>
+
+        <div class="flex items-center justify-around px-1.5 py-2.5">
+
+            <!-- Call -->
+            <button onclick="openModal('call')"
+                    aria-label="Hubungi Kami"
+                    class="group flex flex-col items-center justify-center
+                           gap-1 w-1/5 py-1 rounded-xl
+                           transition-all duration-300
+                           hover:bg-[#fdf2f3] active:scale-90">
+                <span class="flex items-center justify-center
+                             w-10 h-9 rounded-xl
+                             text-[#b76e79]
+                             transition-all duration-300
+                             group-hover:bg-[#f5e3e6]
+                             group-hover:-translate-y-0.5">
+                    <i class="fas fa-phone-volume text-lg"></i>
+                </span>
+                <span class="text-[10px] font-medium tracking-wide
+                             text-[#716366] group-hover:text-[#9c5c67]">
+                    Call
+                </span>
+            </button>
+
+            <!-- Lokasi -->
+            <button onclick="openModal('lokasi')"
+                    aria-label="Lokasi Majlis"
+                    class="group flex flex-col items-center justify-center
+                           gap-1 w-1/5 py-1 rounded-xl
+                           transition-all duration-300
+                           hover:bg-[#fdf2f3] active:scale-90">
+                <span class="flex items-center justify-center
+                             w-10 h-9 rounded-xl text-[#b76e79]
+                             transition-all duration-300
+                             group-hover:bg-[#f5e3e6]
+                             group-hover:-translate-y-0.5">
+                    <i class="fas fa-location-dot text-lg"></i>
+                </span>
+                <span class="text-[10px] font-medium tracking-wide
+                             text-[#716366] group-hover:text-[#9c5c67]">
+                    Lokasi
+                </span>
+            </button>
+
+            <!-- RSVP -->
+            <button onclick="openModal('rsvp')"
+                    aria-label="Pengesahan Kehadiran"
+                    class="group flex flex-col items-center justify-center
+                           gap-1 w-1/5 py-1 rounded-xl
+                           transition-all duration-300
+                           hover:bg-[#fdf2f3] active:scale-90">
+                <span class="flex items-center justify-center
+                             w-10 h-9 rounded-xl text-white
+                             bg-gradient-to-br from-[#c5838e] to-[#a95f6d]
+                             shadow-[0_3px_8px_rgba(183,110,121,0.25)]
+                             transition-all duration-300
+                             group-hover:-translate-y-0.5
+                             group-hover:shadow-md">
+                    <i class="fas fa-envelope-open-text text-base"></i>
+                </span>
+                <span class="text-[10px] font-semibold tracking-wide
+                             text-[#9c5c67]">
+                    RSVP
+                </span>
+            </button>
+
+            <!-- Hadiah -->
+            <button onclick="openModal('hadiah')"
+                    aria-label="Hadiah"
+                    class="group flex flex-col items-center justify-center
+                           gap-1 w-1/5 py-1 rounded-xl
+                           transition-all duration-300
+                           hover:bg-[#fdf2f3] active:scale-90">
+                <span class="flex items-center justify-center
+                             w-10 h-9 rounded-xl text-[#b76e79]
+                             transition-all duration-300
+                             group-hover:bg-[#f5e3e6]
+                             group-hover:-translate-y-0.5">
+                    <i class="fas fa-gift text-lg"></i>
+                </span>
+                <span class="text-[10px] font-medium tracking-wide
+                             text-[#716366] group-hover:text-[#9c5c67]">
+                    Hadiah
+                </span>
+            </button>
+
+            <!-- Masa -->
+            <button onclick="openModal('masa')"
+                    aria-label="Aturcara Majlis"
+                    class="group flex flex-col items-center justify-center
+                           gap-1 w-1/5 py-1 rounded-xl
+                           transition-all duration-300
+                           hover:bg-[#fdf2f3] active:scale-90">
+                <span class="flex items-center justify-center
+                             w-10 h-9 rounded-xl text-[#b76e79]
+                             transition-all duration-300
+                             group-hover:bg-[#f5e3e6]
+                             group-hover:-translate-y-0.5">
+                    <i class="fas fa-clock text-lg"></i>
+                </span>
+                <span class="text-[10px] font-medium tracking-wide
+                             text-[#716366] group-hover:text-[#9c5c67]">
+                    Masa
+                </span>
+            </button>
+
+        </div>
+    </nav>
+</div>
+    <!-- Universal Reusable Modal -->
+    <div id="modal-container" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="theme-border w-full max-w-md rounded-2xl p-6 relative max-h-[85vh] overflow-y-auto">
+            <!-- Close Button -->
+            <button onclick="closeModal()" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-[#f8efef] text-[#9c5c67] hover:bg-[#e8d5d5] transition-colors shadow-sm focus:outline-none">
+                <i class="fas fa-times text-sm"></i>
+            </button>
+
+            <!-- Modal Header Title -->
+            <div class="text-center mb-5">
+                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#fdfaf8] border border-[#e8d5d5] text-[#b76e79] text-xl mb-2 shadow-inner" id="modal-icon">
+                    <i class="fas fa-info-circle"></i>
+                </div>
+                <h3 id="modal-title" class="font-serif-luxury text-2xl font-semibold text-[#4a3e3d]"></h3>
+                <div class="h-px w-16 bg-[#d9c5c5] mx-auto mt-2"></div>
+            </div>
+
+            <!-- Modal Dynamic Body Content -->
+            <div id="modal-body" class="space-y-4 text-sm text-gray-700"></div>
+        </div>
+    </div>
+
+    <!-- Cover Screen / Front Page -->
+    <div id="cover-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#fdfbf7]/95 p-6 text-center backdrop-blur-md">
+        <div class="theme-border max-w-md w-full p-8 md:p-10 rounded-2xl relative overflow-hidden">
+            
+            <p class="text-[11px] tracking-[0.35em] uppercase text-[#8a7070] font-medium mb-3">Walimatul Urus</p>
+            <h1 class="font-cursive text-5xl md:text-6xl text-[#3e3535] my-5 drop-shadow-sm">Zulhilmi &amp; Maryam</h1>
+            <p class="text-sm text-[#665c5c] font-serif-luxury italic mb-8">Sabtu, 5 Disember 2026</p>
+
+            <button id="btn-open" class="bg-[#b76e79] text-white px-8 py-3.5 rounded-full font-medium shadow-md hover:shadow-lg hover:bg-[#9c5c67] transition-all duration-300 transform active:scale-95 border border-[#c5838e] relative z-10 tracking-wide text-sm">
+                <i class="fas fa-envelope-open mr-2"></i> Buka Kad Jemputan
+            </button>
+
+        </div>
+    </div>
+
+    <!-- Main Content Container -->
+    <div id="main-content" class="relative z-10 hidden opacity-0 transition-opacity duration-700 max-w-2xl mx-auto px-4 py-8 space-y-12">
+
+        <!-- Hero Section -->
+        <section class="reveal theme-border p-8 md:p-12 rounded-2xl text-center space-y-6">
+            
+            <div class="space-y-2 mb-6">
+                <p class="text-sm font-serif-luxury italic text-[#5c5050]">Bismillahir Rahmanir Rahim</p>
+                <div class="h-px w-12 bg-[#d9c5c5] mx-auto my-2"></div>
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">Walimatul Urus</p>
+            </div>
+
+            <p class="text-sm leading-relaxed text-[#5c5050] max-w-lg mx-auto">
+                Dengan penuh kesyukuran ke hadrat Allah SWT, kami menjemput Dato’ / Datin / Tuan / Puan / Encik / Cik ke majlis perkahwinan :
+            </p>
+
+            <div class="py-6 space-y-4">
+                <h2 class="font-cursive text-5xl md:text-6xl text-[#3e3535]">Zulhilmi</h2>
+                <p class="text-xs text-[#706464] max-w-md mx-auto leading-relaxed uppercase tracking-wider">
+                    Putera kepada<br><span class="font-semibold text-[#4a3e3d]">Hasinin bin Kinsim &amp; Juhini @ Juhinih binti Temin</span>
+                </p>
+
+                <div class="flex items-center justify-center py-4">
+                    <span class="h-px w-12 bg-[#d9c5c5]"></span>
+                    <p class="font-serif-luxury text-2xl italic text-[#b76e79] font-light px-4">&amp;</p>
+                    <span class="h-px w-12 bg-[#d9c5c5]"></span>
+                </div>
+
+                <h2 class="font-cursive text-5xl md:text-6xl text-[#3e3535]">Maryam</h2>
+                <p class="text-xs text-[#706464] max-w-md mx-auto leading-relaxed uppercase tracking-wider">
+                    Puteri kepada<br><span class="font-semibold text-[#4a3e3d]">Nur Taufiq Sufi bin Louis Abdullah &amp; Nur Hidayatul Husna binti Stephen Abdullah</span>
+                </p>
+            </div>
+        </section>
+
+        <!-- Date & Countdown Section -->
+        <section class="reveal theme-border p-8 rounded-2xl text-center space-y-6">
+            
+            <div class="space-y-3">
+                <p class="text-[10px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">Tarikh Majlis</p>
+
+                <!-- Elegant Date Display -->
+                <div class="space-y-1.5 py-3">
+                    <h3 class="font-serif-luxury text-2xl tracking-[0.2em] text-[#4a3e3d] uppercase font-medium">SABTU</h3>
+                    
+                    <div class="flex items-center justify-center my-2 space-x-4">
+                        <span class="h-px w-10 bg-[#d9c5c5]"></span>
+                        <p class="font-serif-luxury text-3xl md:text-4xl text-rosegold font-normal tracking-wide">
+                            5 Disember 2026
+                        </p>
+                        <span class="h-px w-10 bg-[#d9c5c5]"></span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="flex items-center justify-center my-3 opacity-60">
+                <i class="far fa-clock text-sm text-[#b76e79]"></i>
+            </div>
+
+            <!-- Countdown Timer -->
+            <div class="grid grid-cols-4 gap-3 max-w-sm mx-auto my-6">
+                <div class="bg-[#fcfaf9] p-3 rounded-lg border border-[#f0e6e6] shadow-sm">
+                    <span id="days" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
+                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Hari</span>
+                </div>
+                <div class="bg-[#fcfaf9] p-3 rounded-lg border border-[#f0e6e6] shadow-sm">
+                    <span id="hours" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
+                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Jam</span>
+                </div>
+                <div class="bg-[#fcfaf9] p-3 rounded-lg border border-[#f0e6e6] shadow-sm">
+                    <span id="minutes" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
+                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Minit</span>
+                </div>
+                <div class="bg-[#fcfaf9] p-3 rounded-lg border border-[#f0e6e6] shadow-sm">
+                    <span id="seconds" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
+                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Saat</span>
+                </div>
+            </div>
+
+            <button onclick="addToCalendar()" class="inline-flex items-center text-xs text-[#8a7070] hover:text-[#b76e79] transition-colors font-medium bg-[#fcfaf9] px-5 py-2.5 rounded-full border border-[#e8d5d5] hover:bg-[#f5ebeb] shadow-sm mt-2 uppercase tracking-wide">
+                <i class="far fa-calendar-plus mr-2 text-[#b76e79]"></i> Simpan ke Kalendar
+            </button>
+        </section>
+
+        <!-- GALLERY SECTION -->
+        <section class="reveal theme-border p-6 md:p-8 rounded-2xl">
+            <!-- Header -->
+            <div class="text-center mb-6">
+                <p class="font-cursive text-[#b76e79] text-2xl">
+                    Kenangan
+                </p>
+                <h2 class="font-serif-luxury text-2xl md:text-3xl font-medium text-[#4a3e3d]">
+                    Galeri Kami
+                </h2>
+                <div class="h-px w-8 bg-[#d9c5c5] mx-auto mt-3"></div>
+            </div>
+
+            <!-- GALLERY -->
+            <div class="relative w-full overflow-hidden pb-2">
+                <div id="gallerySlider" class="flex w-full">
+                    <!-- GAMBAR 1 -->
+                    <div class="gallery-slide">
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-sm border border-[#f0e6e6] bg-[#fcfaf9]">
+                            <img src="./gallery1.jpg" onerror="this.src='https://placehold.co/400x500/f5ebeb/b76e79?text=Gambar+1'" alt="Kenangan 1" draggable="false">
+                        </div>
+                    </div>
+                    <!-- GAMBAR 2 -->
+                    <div class="gallery-slide">
+                        <div class="aspect-[4/5] rounded-xl overflow-hidden shadow-sm border border-[#f0e6e6] bg-[#fcfaf9]">
+                            <img src="./gallery2.jpg" onerror="this.src='https://placehold.co/400x500/f5ebeb/b76e79?text=Gambar+2'" alt="Kenangan 2" draggable="false">
+                        </div>
+                    </div>
+                    <!-- GAMBAR 3 -->
+                    <div class="gallery-slide">
+                        <div class="aspect-[5/5] rounded-xl overflow-hidden shadow-sm border border-[#f0e6e6] bg-[#fcfaf9]">
+                            <img src="./gallery3.jpg" onerror="this.src='https://placehold.co/400x500/f5ebeb/b76e79?text=Gambar+3'" alt="Kenangan 3" draggable="false">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BAHAGIAN BAWAH GAMBAR -->
+            <div class="w-full px-5 pt-4 text-center">
+                <h3 class="text-sm font-semibold text-[#5c5050] uppercase tracking-wide">
+                    Kenangan Bersama
+                </h3>
+            </div>
+
+            <!-- INDICATOR -->
+            <div id="galleryIndicators" class="flex justify-center items-center gap-2 mt-4">
+                <!-- Dots akan dijana (generate) secara automatik -->
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-10 text-xs text-[#8a7070] space-y-3 relative">
+            <div class="flex justify-center items-center space-x-3 mb-4">
+                <span class="h-px w-8 bg-[#d9c5c5]"></span>
+                <i class="fas fa-heart text-[10px] text-[#b76e79]"></i>
+                <span class="h-px w-8 bg-[#d9c5c5]"></span>
+            </div>
+            <p class="font-cursive text-3xl text-[#4a3e3d] drop-shadow-sm">Zulhilmi &amp; Maryam</p>
+            <p class="tracking-[0.2em] uppercase text-[9px] text-[#8a7070] font-medium pt-2">Terima Kasih</p>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+
+    <script>
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbzHXOEeLv84_aloPCBHHAAqlMDhgqODPdG2G-vTeCTOYdPNYjV7zShg8qrSpH-vxZR2/exec';
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const coverScreen = document.getElementById('cover-screen');
+            const mainContent = document.getElementById('main-content');
+            const btnOpen = document.getElementById('btn-open');
+            const bgMusic = document.getElementById('bg-music');
+            const audioControl = document.getElementById('audio-control');
+            const musicIcon = document.getElementById('music-icon');
+            let isPlaying = false;
+
+            // Audio Events Setup for perfect Syncing
+            if(bgMusic) {
+                bgMusic.addEventListener('play', () => {
+                    isPlaying = true;
+                    if (musicIcon) {
+                        musicIcon.classList.add('spin', 'fa-compact-disc');
+                        musicIcon.classList.remove('fa-play-circle');
+                    }
+                });
+
+                bgMusic.addEventListener('pause', () => {
+                    isPlaying = false;
+                    if (musicIcon) {
+                        musicIcon.classList.remove('spin', 'fa-compact-disc');
+                        musicIcon.classList.add('fa-play-circle');
+                    }
+                });
+            }
+
+            if (btnOpen) {
+                btnOpen.addEventListener('click', () => {
+                    if (coverScreen) coverScreen.classList.add('opened');
+                    
+                    setTimeout(() => {
+                        if (mainContent) {
+                            mainContent.classList.remove('hidden');
+                            void mainContent.offsetWidth;
+                            mainContent.classList.remove('opacity-0');
+                        }
+                        
+                        if (audioControl) audioControl.style.display = 'flex';
+                        const bottomNav = document.getElementById('bottom-nav');
+                        if (bottomNav) bottomNav.classList.remove('hidden');
+                        initReveal();
+                    }, 400);
+
+                    playAudio();
+                    initParticles();
+                });
+            }
+
+            function initParticles() {
+                if (window.particlesJS) {
+                    particlesJS('particles-js', {
+                        "particles": {
+                            "number": { "value": 15, "density": { "enable": true, "value_area": 800 } },
+                            "color": { "value": "#d9c5c5" },
+                            "shape": { "type": "circle" },
+                            "opacity": { "value": 0.5, "random": true },
+                            "size": { "value": 3, "random": true },
+                            "line_linked": { "enable": false },
+                            "move": { "enable": true, "speed": 1.0, "direction": "top", "random": true, "straight": false, "out_mode": "out" }
+                        },
+                        "interactivity": { "events": { "onhover": { "enable": false }, "onclick": { "enable": false } } },
+                        "retina_detect": true
+                    });
+                }
+            }
+
+            function playAudio() {
+                if (!bgMusic) return;
+                bgMusic.play().catch(error => {
+                    console.log("Audio autoplay restricted by browser:", error);
+                });
+            }
+
+            window.toggleAudio = function() {
+                if (!bgMusic) return;
+                if (isPlaying) {
+                    bgMusic.pause();
+                } else {
+                    bgMusic.play().catch(error => {
+                        console.log("Audio play failed:", error);
+                    });
+                }
+            };
+
+            const countDownDate = new Date("2026-12-05T09:00:00").getTime();
+
+            const timerX = setInterval(function() {
+                const now = new Date().getTime();
+                const distance = countDownDate - now;
+
+                const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+                const elDays = document.getElementById("days");
+                const elHours = document.getElementById("hours");
+                const elMin = document.getElementById("minutes");
+                const elSec = document.getElementById("seconds");
+
+                if (elDays) elDays.innerHTML = days.toString().padStart(2, '0');
+                if (elHours) elHours.innerHTML = hours.toString().padStart(2, '0');
+                if (elMin) elMin.innerHTML = minutes.toString().padStart(2, '0');
+                if (elSec) elSec.innerHTML = seconds.toString().padStart(2, '0');
+
+                if (distance < 0) {
+                    clearInterval(timerX);
+                    if (elDays) elDays.innerHTML = "00";
+                    if (elHours) elHours.innerHTML = "00";
+                    if (elMin) elMin.innerHTML = "00";
+                    if (elSec) elSec.innerHTML = "00";
+                }
+            }, 1000);
+
+            function initReveal() {
+                const reveals = document.querySelectorAll(".reveal");
+
+                function revealOnScroll() {
+                    const windowHeight = window.innerHeight;
+                    const elementVisible = 80;
+
+                    reveals.forEach((reveal) => {
+                        const elementTop = reveal.getBoundingClientRect().top;
+                        if (elementTop < windowHeight - elementVisible) {
+                            reveal.classList.add("active");
+                        }
+                    });
+                }
+
+                window.addEventListener("scroll", revealOnScroll);
+                setTimeout(revealOnScroll, 300);
+            }
+        });
+
+        // GALLERY SCRIPT
+        document.addEventListener("DOMContentLoaded", function () {
+            const slider = document.getElementById("gallerySlider");
+            const slides = document.querySelectorAll(".gallery-slide");
+            const dotsContainer = document.getElementById("galleryIndicators");
+            
+            if (!slider || slides.length === 0) return;
+
+            let currentSlide = 0;
+            const slidesPerView = 1;
+            const maxSlide = Math.max(0, slides.length - slidesPerView);
+            
+            let startX = 0;
+            let currentX = 0;
+            let isDragging = false;
+
+            if (dotsContainer) {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i <= maxSlide; i++) {
+                    const dot = document.createElement('span');
+                    dot.className = `gallery-dot ${i === 0 ? 'active' : ''}`;
+                    dot.addEventListener('click', () => {
+                        currentSlide = i;
+                        updateGallery(true);
+                    });
+                    dotsContainer.appendChild(dot);
+                }
+            }
+            const dots = document.querySelectorAll(".gallery-dot");
+
+            function updateGallery(animate = true) {
+                slider.style.transition = animate ? "transform 0.4s cubic-bezier(0.25, 1, 0.5, 1)" : "none";
+                slider.style.transform = `translateX(-${currentSlide * (100 / slidesPerView)}%)`;
+                
+                dots.forEach((dot, index) => {
+                    dot.classList.toggle("active", index === currentSlide);
+                });
+            }
+
+            slider.addEventListener("touchstart", function (e) {
+                startX = e.touches[0].clientX;
+                currentX = startX;
+                isDragging = true;
+                slider.style.transition = "none";
+            }, { passive: true });
+
+            slider.addEventListener("touchmove", function (e) {
+                if (!isDragging) return;
+                currentX = e.touches[0].clientX;
+                const diff = currentX - startX;
+                const percentMove = (diff / slider.offsetWidth) * 100;
+                const baseTranslate = -(currentSlide * (100 / slidesPerView));
+                
+                let newTranslate = baseTranslate + percentMove;
+                if (currentSlide === 0 && diff > 0) {
+                    newTranslate = baseTranslate + (percentMove / 3);
+                } else if (currentSlide === maxSlide && diff < 0) {
+                    newTranslate = baseTranslate + (percentMove / 3);
+                }
+                
+                slider.style.transform = `translateX(${newTranslate}%)`;
+            }, { passive: true });
+
+            slider.addEventListener("touchend", function () {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = currentX - startX;
+                const threshold = 40;
+                
+                if (diff < -threshold && currentSlide < maxSlide) {
+                    currentSlide++;
+                } else if (diff > threshold && currentSlide > 0) {
+                    currentSlide--;
+                }
+                updateGallery(true);
+            });
+
+            slider.addEventListener("mousedown", function (e) {
+                startX = e.clientX;
+                currentX = startX;
+                isDragging = true;
+                slider.style.transition = "none";
+            });
+
+            slider.addEventListener("mousemove", function (e) {
+                if (!isDragging) return;
+                currentX = e.clientX;
+                const diff = currentX - startX;
+                const percentMove = (diff / slider.offsetWidth) * 100;
+                const baseTranslate = -(currentSlide * (100 / slidesPerView));
+                
+                let newTranslate = baseTranslate + percentMove;
+                if (currentSlide === 0 && diff > 0) {
+                    newTranslate = baseTranslate + (percentMove / 3);
+                } else if (currentSlide === maxSlide && diff < 0) {
+                    newTranslate = baseTranslate + (percentMove / 3);
+                }
+                
+                slider.style.transform = `translateX(${newTranslate}%)`;
+            });
+
+            slider.addEventListener("mouseup", function () {
+                if (!isDragging) return;
+                isDragging = false;
+                const diff = currentX - startX;
+                const threshold = 40;
+                
+                if (diff < -threshold && currentSlide < maxSlide) {
+                    currentSlide++;
+                } else if (diff > threshold && currentSlide > 0) {
+                    currentSlide--;
+                }
+                updateGallery(true);
+            });
+
+            slider.addEventListener("mouseleave", function () {
+                if (!isDragging) return;
+                isDragging = false;
+                updateGallery(true);
+            });
+
+            updateGallery(false);
+        });
+
+        const INVITATION_CONFIG = {
+            call: [
+                { role: "Bapa Pengantin Lelaki", name: "HASININ", phone: "+60165824470" },
+                { role: "Ibu Pengantin Lelaki", name: "JUHINI", phone: "+60136994811" },
+                { role: "Ibu Pengantin Lelaki", name: "HANA", phone: "+60165824471" },
+                { role: "Bapa Pengantin Perempuan", name: "TAUFIQ", phone: "+60147039503" },
+                { role: "Ibu Pengantin Perempuan", name: "HIDAYAH", phone: "+601127842603" }
+            ],
+            lokasi: {
+                venue: "Kediaman Pengantin Perempuan",
+                address: "Kg Kayul, Kuala Penyu, Sabah",
+                googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=5.5062792,115.5570494",
+                wazeUrl: "https://waze.com/ul?ll=5.5062792,115.5570494&navigate=yes"
+            },
+            hadiah: {
+                bankName: "CIMB Bank",
+                accNumber: "7074441830",
+                accName: "ZULHILMI IZZAT BIN HASININ",
+                qrCodeUrl: "qrcode.jpg"
+            },
+            masa: {
+                tentatif: [
+                    { time: "11:00 AM", detail: "Kehadiran Tetamu" },
+                    { time: "12:00 PM", detail: "Ketibaan Pengantin" },
+                    { time: "01:00 PM", detail: "Bacaan Doa Kesyukuran Dan Jamuan" },
+                    { time: "05:00 PM", detail: "Majlis Dijangka Selesai" }
+                ]
+            }
+        };
+
+        window.closeModal = function() {
+            const modalContainer = document.getElementById('modal-container');
+            if(modalContainer) {
+                modalContainer.classList.add('opacity-0');
+                setTimeout(() => {
+                    modalContainer.classList.add('hidden');
+                }, 300);
+            }
+        };
+
+        window.openModal = function(type) {
+            const modalContainer = document.getElementById('modal-container');
+            const modalTitle = document.getElementById('modal-title');
+            const modalIcon = document.getElementById('modal-icon');
+            const modalBody = document.getElementById('modal-body');
+            
+            if (!modalContainer || !modalTitle || !modalIcon || !modalBody) return;
+
+            let title = '';
+            let iconHtml = '';
+            let htmlContent = '';
+
+            if (type === 'call') {
+                title = 'Hubungi Kami';
+                iconHtml = '<i class="fas fa-phone-alt"></i>';
+                htmlContent = `<div class="space-y-3">
+                    ${INVITATION_CONFIG.call.map(contact => {
+                        const cleanPhone = contact.phone.replace(/\s+/g, '');
+                        return `
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-[#fcfaf9] border border-[#f0e6e6] shadow-sm hover:shadow transition-shadow">
+                            <div>
+                                <p class="text-[10px] uppercase tracking-wider text-[#8a7070] font-semibold mb-0.5">${contact.role}</p>
+                                <p class="font-bold text-[#4a3e3d] text-sm">${contact.name}</p>
+                            </div>
+                            <div class="flex space-x-2">
+                                <a href="tel:${cleanPhone}" class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-[#b76e79] shadow-sm hover:bg-[#f8efef] border border-[#f0e6e6] transition-colors">
+                                    <i class="fas fa-phone"></i>
+                                </a>
+                                <a href="https://wa.me/${cleanPhone.replace('+','')}" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-[#5c9c7c] shadow-sm hover:bg-[#eaf4ef] border border-[#d6e8e0] transition-colors">
+                                    <i class="fab fa-whatsapp text-lg"></i>
+                                </a>
+                            </div>
+                        </div>`;
+                    }).join('')}
+                </div>`;
+            } 
+            else if (type === 'lokasi') {
+                title = 'Lokasi Majlis';
+                iconHtml = '<i class="fas fa-map-marked-alt"></i>';
+                htmlContent = `
+                <div class="text-center space-y-4">
+                    <div>
+                        <p class="font-bold text-[#4a3e3d] text-base mb-1">${INVITATION_CONFIG.lokasi.venue}</p>
+                        <p class="text-xs text-[#706464]">${INVITATION_CONFIG.lokasi.address}</p>
+                    </div>
+                    
+                    <div class="rounded-xl overflow-hidden border border-[#e8d5d5] shadow-sm h-48 relative bg-gray-50">
+                        <iframe title="Map Modal" width="100%" height="100%" style="border:0;" loading="lazy" src="https://maps.google.com/maps?q=5.5062792,115.5570494&hl=ms&z=16&output=embed"></iframe>
+                    </div>
+
+                    <div class="grid grid-cols-2 gap-3 mt-4">
+                        <a href="${INVITATION_CONFIG.lokasi.googleMapsUrl}" target="_blank" class="flex items-center justify-center space-x-2 bg-white border border-[#e8d5d5] text-[#5c5050] py-2.5 rounded-xl shadow-sm hover:bg-[#fcfaf9] transition-colors font-medium text-sm">
+                            <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" class="w-4 h-4" alt="GMap">
+                            <span>Google Maps</span>
+                        </a>
+                        <a href="${INVITATION_CONFIG.lokasi.wazeUrl}" target="_blank" class="flex items-center justify-center space-x-2 bg-white border border-[#e8d5d5] text-[#5c5050] py-2.5 rounded-xl shadow-sm hover:bg-[#fcfaf9] transition-colors font-medium text-sm">
+                            <i class="fab fa-waze text-blue-400 text-lg"></i>
+                            <span>Waze</span>
+                        </a>
+                    </div>
+                </div>`;
+            }
+            else if (type === 'rsvp') {
+                title = 'Pengesahan Hadir';
+                iconHtml = '<i class="fas fa-envelope-open-text"></i>';
+                htmlContent = `
+                <form onsubmit="submitRSVPModal(event)" class="space-y-4 text-left">
+                    <div>
+                        <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Nama Penuh</label>
+                        <input type="text" id="modal-name" required class="w-full bg-white border border-[#e8d5d5] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#b76e79] transition-all shadow-sm" placeholder="Masukkan nama anda">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Kehadiran</label>
+                        <select id="modal-attendance" onchange="toggleModalPax(this.value)" class="w-full bg-white border border-[#e8d5d5] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#b76e79] transition-all shadow-sm text-gray-700">
+                            <option value="Hadir">Hadir</option>
+                            <option value="Tidak Hadir">Tidak Hadir</option>
+                        </select>
+                    </div>
+
+                    <div id="modal-pax-container">
+                        <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Jumlah Kehadiran</label>
+                        <select id="modal-pax" class="w-full bg-white border border-[#e8d5d5] rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#b76e79] transition-all shadow-sm text-gray-700">
+                            ${Array.from({length: 10}, (_, i) => `<option value="${i+1}">${i+1} Orang</option>`).join('')}
+                        </select>
+                    </div>
+
+                    <div class="pt-3">
+                        <button type="submit" id="modal-rsvp-btn" class="w-full bg-[#b76e79] hover:bg-[#9c5c67] text-white font-medium py-3 rounded-xl shadow-md transition-all active:scale-[0.98]">
+                            Hantar RSVP
+                        </button>
+                    </div>
+                </form>`;
+            }
+            else if (type === 'hadiah') {
+                title = 'Sumbangan Hadiah';
+                iconHtml = '<i class="fas fa-gift"></i>';
+                htmlContent = `
+                <div class="text-center space-y-4">
+                    <p class="text-sm text-[#706464] leading-relaxed max-w-sm mx-auto mb-2">
+                        Ingatan dan tanda kasih daripada anda amat kami hargai. Namun, doa restu dan kehadiran anda tetap menjadi hadiah yang paling bermakna buat kami.
+                    </p>
+
+                    <div class="bg-white border border-[#e8d5d5] rounded-xl p-4 shadow-sm inline-block mx-auto mb-2">
+                        <div class="w-48 h-48 mx-auto bg-gray-50 rounded-lg overflow-hidden mb-3 border border-gray-100 p-2">
+                            <img src="${INVITATION_CONFIG.hadiah.qrCodeUrl}" alt="QR Code Bank" id="qr-code-image" class="w-full h-full object-contain">
+                        </div>
+                        <button onclick="downloadQR()" class="w-full bg-[#fcfaf9] hover:bg-[#f5ebeb] text-[#8a7070] border border-[#f0e6e6] font-medium py-2 px-4 rounded-lg text-sm transition-colors flex items-center justify-center space-x-2">
+                            <i class="fas fa-download"></i>
+                            <span>Simpan QR</span>
+                        </button>
+                    </div>
+
+                    <div class="flex items-center justify-center space-x-4 my-2 opacity-40">
+                        <div class="h-px w-12 bg-[#8a7070]"></div>
+                        <span class="text-[10px] uppercase tracking-widest text-[#8a7070] font-bold">ATAU</span>
+                        <div class="h-px w-12 bg-[#8a7070]"></div>
+                    </div>
+
+                    <div class="bg-[#fcfaf9] border border-[#e8d5d5] rounded-xl p-4 shadow-sm text-left">
+                        <p class="text-[10px] uppercase tracking-widest text-[#8a7070] font-bold mb-1">Pindahan Bank</p>
+                        <p class="text-sm font-semibold text-[#4a3e3d]">${INVITATION_CONFIG.hadiah.bankName}</p>
+                        
+                        <div class="flex items-center justify-between bg-white border border-[#f0e6e6] p-2.5 rounded-lg mt-2">
+                            <p class="text-lg font-bold tracking-wider text-[#4a3e3d] font-mono">${INVITATION_CONFIG.hadiah.accNumber}</p>
+                            <button onclick="copyAccNumber()" class="w-8 h-8 flex items-center justify-center rounded-md bg-[#f8efef] text-[#b76e79] hover:bg-[#e8d5d5] transition-colors" title="Salin Akaun">
+                                <i class="far fa-copy"></i>
+                            </button>
+                        </div>
+                        
+                        <p class="text-xs font-medium text-[#706464] mt-3 uppercase tracking-wide">${INVITATION_CONFIG.hadiah.accName}</p>
+                    </div>
+                </div>`;
+            }
+            else if (type === 'masa') {
+                title = 'Aturcara Majlis';
+                iconHtml = '<i class="fas fa-clipboard-list"></i>';
+                htmlContent = `
+                <div class="space-y-3 relative mt-2">
+                    <div class="absolute left-[15px] top-4 bottom-4 w-px bg-[#d9c5c5]"></div>
+                    ${INVITATION_CONFIG.masa.tentatif.map(item => `
+                        <div class="relative pl-10 pr-2 py-2">
+                            <div class="absolute left-[11.5px] top-1/2 -translate-y-1/2 w-2 h-2 bg-[#b76e79] rounded-full border border-white"></div>
+                            <div class="bg-[#fcfaf9] p-3 rounded-lg border border-[#f0e6e6] shadow-sm">
+                                <span class="block font-bold text-[#9c5c67] text-[11px] uppercase tracking-wider mb-1">${item.time}</span>
+                                <span class="text-[#4a3e3d] text-sm font-medium">${item.detail}</span>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>`;
+            }
+
+            modalTitle.innerText = title;
+            modalIcon.innerHTML = iconHtml;
+            modalBody.innerHTML = htmlContent;
+
+            modalContainer.classList.remove('hidden');
+            setTimeout(() => {
+                modalContainer.classList.remove('opacity-0');
+            }, 10);
+        };
+
+        window.toggleModalPax = function(val) {
+            const modalPaxContainer = document.getElementById('modal-pax-container');
+            if (modalPaxContainer) {
+                modalPaxContainer.style.display = (val === 'Tidak Hadir') ? 'none' : 'block';
+            }
+        };
+
+        window.submitRSVPModal = function(e) {
+            e.preventDefault();
+            const name = document.getElementById('modal-name')?.value.trim();
+            const attendance = document.getElementById('modal-attendance')?.value;
+            const pax = document.getElementById('modal-pax')?.value || '1';
+            const modalRsvpBtn = document.getElementById('modal-rsvp-btn');
+
+            if (!name || !attendance) {
+                Swal.fire({ text: 'Sila lengkapkan butiran RSVP.', icon: 'warning', confirmButtonColor: '#b76e79' });
+                return;
+            }
+
+            if (modalRsvpBtn) {
+                modalRsvpBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Menghantar...';
+                modalRsvpBtn.disabled = true;
+            }
+
+            if (scriptURL.includes('XXXXXXXXXXXX') || !scriptURL.startsWith('http')) {
+                setTimeout(() => {
+                    closeModal();
+                    Swal.fire({ title: 'Terima Kasih!', text: 'RSVP berjaya (Mod Demo). Sila letak link Google Script sebenar.', icon: 'success', confirmButtonColor: '#b76e79' });
+                }, 800);
+                return;
+            }
+
+            const formData = new FormData();
+            formData.append('Type', 'RSVP');
+            formData.append('Nama', name);
+            formData.append('Kehadiran', attendance);
+            formData.append('JumlahPax', attendance === 'Tidak Hadir' ? '0' : pax);
+            formData.append('Tarikh', new Date().toLocaleString('ms-MY'));
+
+            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
+                .then(() => {
+                    closeModal();
+                    Swal.fire({ title: 'Terima Kasih!', text: 'Pengesahan RSVP anda telah direkodkan.', icon: 'success', confirmButtonColor: '#b76e79' });
+                })
+                .catch(() => {
+                    closeModal();
+                    Swal.fire({ title: 'Ralat', text: 'Harap maaf, RSVP tidak dapat dihantar. Sila cuba lagi.', icon: 'error', confirmButtonColor: '#b76e79' });
+                });
+        };
+
+        window.copyAccNumber = function() {
+            const textToCopy = INVITATION_CONFIG.hadiah.accNumber;
+            const tempTextArea = document.createElement("textarea");
+            tempTextArea.value = textToCopy;
+            document.body.appendChild(tempTextArea);
+            tempTextArea.select();
+            try {
+                document.execCommand('copy');
+                Swal.fire({ title: 'Berjaya disalin!', text: `No. Akaun: ${textToCopy}`, icon: 'success', timer: 2000, showConfirmButton: false });
+            } catch (err) {
+                Swal.fire({ title: 'Ralat', text: 'Tidak dapat menyalin ke papan keratan.', icon: 'error', confirmButtonColor: '#b76e79' });
+            }
+            document.body.removeChild(tempTextArea);
+        };
+
+        window.downloadQR = function() {
+            const qrImage = document.getElementById('qr-code-image');
+            if (qrImage) {
+                const link = document.createElement('a');
+                link.href = qrImage.src;
+                link.download = 'QR_Sumbangan_Zulhilmi_Maryam.png';
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                Swal.fire({ title: 'Berjaya!', text: 'QR Code sedang dimuat turun.', icon: 'success', timer: 2000, showConfirmButton: false });
+            }
+        };
+
+        window.addToCalendar = function() {
+            const text = "Walimatul Urus Zulhilmi & Maryam";
+            const dates = "20261205T010000Z/20261205T090000Z";
+            const details = "Majlis Perkahwinan Zulhilmi dan Maryam.";
+            const location = "Kg Kayul, Kuala Penyu, Sabah";
+            const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(text)}&dates=${dates}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
+            window.open(gCalUrl, '_blank');
+        };
+    </script>
+</body>
+</html>
