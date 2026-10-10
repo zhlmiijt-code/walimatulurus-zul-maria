@@ -169,6 +169,509 @@
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
+        
+/* ===== PREMIUM WEDDING COVER ANIMATION ===== */
+
+#cover-screen {
+    overflow: hidden;
+    isolation: isolate;
+    background:
+        radial-gradient(ellipse at 50% 40%,
+            rgba(255,255,255,0.98) 0%,
+            rgba(255,241,245,0.96) 45%,
+            rgba(242,220,225,0.98) 100%);
+}
+
+/* Cahaya lembut bergerak */
+#cover-screen::before {
+    content: "";
+    position: absolute;
+    inset: -50%;
+    z-index: -1;
+    pointer-events: none;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255,255,255,0.65),
+        transparent,
+        rgba(197,131,142,0.12),
+        transparent
+    );
+    animation: coverLight 18s linear infinite;
+}
+
+@keyframes coverLight {
+    to { transform: rotate(360deg); }
+}
+
+/* Bunga terapung */
+.cover-flower {
+    position: absolute;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    animation: flowerFloat 7s ease-in-out infinite;
+    filter: drop-shadow(0 4px 8px rgba(183,110,121,0.15));
+}
+
+.cover-flower.f1 {
+    top: 12%;
+    left: 8%;
+    font-size: 30px;
+    animation-delay: 0s;
+}
+
+.cover-flower.f2 {
+    top: 22%;
+    right: 9%;
+    font-size: 23px;
+    animation-delay: 1.5s;
+}
+
+.cover-flower.f3 {
+    bottom: 22%;
+    left: 12%;
+    font-size: 25px;
+    animation-delay: 2.5s;
+}
+
+.cover-flower.f4 {
+    bottom: 14%;
+    right: 10%;
+    font-size: 32px;
+    animation-delay: 0.8s;
+}
+
+@keyframes flowerFloat {
+    0% {
+        transform: translateY(20px) rotate(-15deg) scale(0.8);
+        opacity: 0;
+    }
+    25% { opacity: 0.75; }
+    50% {
+        transform: translateY(-18px) rotate(12deg) scale(1);
+        opacity: 0.9;
+    }
+    100% {
+        transform: translateY(-38px) rotate(20deg) scale(0.85);
+        opacity: 0;
+    }
+}
+
+/* Bingkai bercahaya */
+.cover-frame {
+    position: relative;
+    border: 1px solid rgba(183,110,121,0.42);
+    border-radius: 180px 180px 24px 24px;
+    padding: 35px 24px;
+    box-shadow:
+        0 0 0 7px rgba(255,255,255,0.35),
+        0 15px 45px rgba(183,110,121,0.12);
+    animation: frameGlow 4s ease-in-out infinite;
+}
+
+@keyframes frameGlow {
+    0%, 100% {
+        box-shadow:
+            0 0 0 7px rgba(255,255,255,0.35),
+            0 15px 45px rgba(183,110,121,0.12);
+    }
+    50% {
+        box-shadow:
+            0 0 0 10px rgba(255,255,255,0.48),
+            0 15px 55px rgba(183,110,121,0.24);
+    }
+}
+
+/* Butang buka kad */
+.cover-open-btn {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid rgba(255,255,255,0.65);
+    background: linear-gradient(135deg, #b76e79, #d49aa2, #a85e6b);
+    color: white;
+    padding: 14px 30px;
+    border-radius: 999px;
+    letter-spacing: 1.5px;
+    box-shadow: 0 8px 24px rgba(183,110,121,0.28);
+    animation: buttonFloat 3s ease-in-out infinite;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.cover-open-btn::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 45%;
+    height: 200%;
+    transform: rotate(25deg);
+    background: rgba(255,255,255,0.38);
+    animation: buttonShimmer 4s ease-in-out infinite;
+}
+
+.cover-open-btn:hover {
+    transform: translateY(-3px) scale(1.03);
+    box-shadow: 0 12px 32px rgba(183,110,121,0.38);
+}
+
+.cover-open-btn:active {
+    transform: scale(0.97);
+}
+
+@keyframes buttonFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
+
+@keyframes buttonShimmer {
+    0%, 65% { left: -80%; }
+    100% { left: 150%; }
+}
+
+/* Kemunculan teks berperingkat */
+.cover-content > * {
+    animation: coverReveal 1.1s both;
+}
+
+.cover-content > *:nth-child(1) { animation-delay: 0.15s; }
+.cover-content > *:nth-child(2) { animation-delay: 0.35s; }
+.cover-content > *:nth-child(3) { animation-delay: 0.55s; }
+.cover-content > *:nth-child(4) { animation-delay: 0.75s; }
+.cover-content > *:nth-child(5) { animation-delay: 0.95s; }
+
+@keyframes coverReveal {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+        filter: blur(5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+/* Hormati tetapan kurang animasi */
+@media (prefers-reduced-motion: reduce) {
+    #cover-screen::before,
+    .cover-flower,
+    .cover-frame,
+    .cover-open-btn,
+    .cover-open-btn::before,
+    .cover-content > * {
+        animation: none !important;
+    }
+}
+
+/* ===== CONNECT ANIMATION TO EXISTING COVER ===== */
+
+/* Bingkai asal menggunakan theme-border */
+#cover-screen .theme-border {
+    position: relative;
+    border-radius: 180px 180px 24px 24px;
+    box-shadow:
+        0 0 0 7px rgba(255,255,255,0.35),
+        0 15px 45px rgba(183,110,121,0.12);
+    animation: frameGlow 4s ease-in-out infinite;
+}
+
+/* Butang asal mempunyai id btn-open */
+#btn-open {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        #b76e79,
+        #d49aa2,
+        #a85e6b
+    );
+    box-shadow: 0 8px 24px rgba(183,110,121,0.28);
+    animation: buttonFloat 3s ease-in-out infinite;
+    transition: box-shadow 0.3s ease;
+}
+
+/* Kilauan bergerak pada butang */
+#btn-open::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 45%;
+    height: 200%;
+    transform: rotate(25deg);
+    background: rgba(255,255,255,0.38);
+    pointer-events: none;
+    animation: buttonShimmer 4s ease-in-out infinite;
+}
+
+#btn-open:hover {
+    box-shadow: 0 12px 32px rgba(183,110,121,0.4);
+}
+
+/* Pastikan teks muncul berperingkat */
+#cover-screen .cover-content > * {
+    animation: coverReveal 1.1s both;
+}
+
+/* Bunga muncul di atas latar cover */
+#cover-screen .cover-flower {
+    z-index: 2;
+}
+
+/* Aksesibiliti */
+@media (prefers-reduced-motion: reduce) {
+    #cover-screen .theme-border,
+    #btn-open,
+    #btn-open::before,
+    #cover-screen .cover-content > * {
+        animation: none !important;
+    }
+}
+
+/* =====================================
+   PREMIUM WEDDING COVER — SOFT PINK
+===================================== */
+
+#cover-screen {
+    position: fixed;
+    isolation: isolate;
+    overflow: hidden;
+    background:
+        radial-gradient(ellipse at top, #fff7f8 0%, transparent 60%),
+        linear-gradient(135deg, #fdfbf7, #f9e9ec, #fffaf8);
+    transition: transform 1.2s cubic-bezier(.77, 0, .18, 1),
+                opacity 1s ease;
+}
+
+#cover-screen.opened {
+    transform: translateY(-100%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Cahaya lembut bergerak */
+.cover-light {
+    position: absolute;
+    inset: -50%;
+    z-index: 0;
+    pointer-events: none;
+    background: conic-gradient(
+        from 0deg,
+        transparent,
+        rgba(255, 218, 225, .32),
+        transparent 25%,
+        rgba(255, 255, 255, .65),
+        transparent 55%
+    );
+    animation: coverLight 24s linear infinite;
+}
+
+@keyframes coverLight {
+    to { transform: rotate(360deg); }
+}
+
+/* Bunga terapung */
+.cover-flower {
+    position: absolute;
+    z-index: 2;
+    pointer-events: none;
+    color: #d69aa5;
+    opacity: .65;
+    filter: drop-shadow(0 5px 10px rgba(183, 110, 121, .15));
+    animation: flowerFloat 8s ease-in-out infinite;
+}
+
+.f1 { top: 9%; left: 8%; font-size: 34px; animation-delay: 0s; }
+.f2 { top: 22%; right: 9%; font-size: 28px; animation-delay: -2s; }
+.f3 { bottom: 15%; left: 8%; font-size: 32px; animation-delay: -4s; }
+.f4 { bottom: 10%; right: 10%; font-size: 27px; animation-delay: -1s; }
+.f5 { top: 48%; left: 4%; font-size: 24px; animation-delay: -3s; }
+.f6 { top: 48%; right: 4%; font-size: 30px; animation-delay: -5s; }
+
+@keyframes flowerFloat {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-18px) rotate(12deg); }
+}
+
+/* Bingkai kad */
+.cover-card {
+    z-index: 1;
+    border: 1px solid rgba(196, 139, 149, .45);
+    border-radius: 180px 180px 24px 24px;
+    background: rgba(255, 252, 250, .83);
+    box-shadow:
+        0 0 0 7px rgba(255, 255, 255, .38),
+        0 20px 60px rgba(183, 110, 121, .15),
+        inset 0 0 35px rgba(255, 230, 234, .28);
+    animation: frameGlow 5s ease-in-out infinite;
+}
+
+@keyframes frameGlow {
+    0%, 100% {
+        box-shadow: 0 0 0 7px rgba(255,255,255,.38),
+                    0 20px 50px rgba(183,110,121,.12);
+    }
+    50% {
+        box-shadow: 0 0 0 10px rgba(255,255,255,.55),
+                    0 24px 65px rgba(183,110,121,.23);
+    }
+}
+
+/* Kemunculan teks */
+.cover-content > * {
+    animation: coverReveal 1s ease both;
+}
+
+.cover-content > *:nth-child(1) { animation-delay: .15s; }
+.cover-content > *:nth-child(2) { animation-delay: .3s; }
+.cover-content > *:nth-child(3) { animation-delay: .45s; }
+.cover-content > *:nth-child(4) { animation-delay: .6s; }
+.cover-content > *:nth-child(5) { animation-delay: .75s; }
+.cover-content > *:nth-child(6) { animation-delay: .9s; }
+
+@keyframes coverReveal {
+    from { opacity: 0; transform: translateY(16px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Garisan hiasan */
+.cover-divider {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    margin: 14px auto;
+    color: #bc818b;
+}
+
+.cover-divider::before,
+.cover-divider::after {
+    content: "";
+    width: 55px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #c9949d);
+}
+
+.cover-divider::after {
+    transform: rotate(180deg);
+}
+
+.cover-divider span {
+    font-size: 22px;
+    animation: dividerPulse 3s ease-in-out infinite;
+}
+
+@keyframes dividerPulse {
+    0%, 100% { opacity: .65; transform: scale(1); }
+    50% { opacity: 1; transform: scale(1.15); }
+}
+
+/* Warna nama pasangan */
+.text-rosegold {
+    color: #a86674;
+    text-shadow: 0 3px 14px rgba(183, 110, 121, .12);
+}
+
+/* Kilauan dalam bingkai */
+.cover-sparkle {
+    position: absolute;
+    z-index: 2;
+    color: #c58a94;
+    pointer-events: none;
+    animation: sparkleTwinkle 3s ease-in-out infinite;
+}
+
+.sparkle-1 { top: 22%; left: 12%; font-size: 23px; }
+.sparkle-2 { top: 42%; right: 10%; font-size: 17px; animation-delay: 1s; }
+.sparkle-3 { bottom: 18%; left: 18%; font-size: 19px; animation-delay: 2s; }
+
+@keyframes sparkleTwinkle {
+    0%, 100% { opacity: .25; transform: scale(.75) rotate(0deg); }
+    50% { opacity: 1; transform: scale(1.2) rotate(20deg); }
+}
+
+/* Butang buka kad */
+.cover-open-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+    padding: 15px 28px;
+    border: 1px solid #d4a0a8;
+    border-radius: 999px;
+    overflow: hidden;
+    color: white;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: .04em;
+    background: linear-gradient(135deg, #b76e79, #d49aa2, #a85e6b);
+    box-shadow: 0 8px 25px rgba(183, 110, 121, .25);
+    cursor: pointer;
+    transition: box-shadow .3s ease, filter .3s ease;
+    animation: buttonFloat 3.5s ease-in-out infinite;
+}
+
+.cover-open-btn:hover {
+    box-shadow: 0 12px 32px rgba(183, 110, 121, .4);
+    filter: brightness(1.06);
+}
+
+.cover-open-btn:active {
+    filter: brightness(.95);
+}
+
+.button-shine {
+    position: absolute;
+    top: -50%;
+    left: -80%;
+    width: 40%;
+    height: 200%;
+    transform: rotate(25deg);
+    background: rgba(255, 255, 255, .38);
+    pointer-events: none;
+    animation: buttonShine 4s ease-in-out infinite;
+}
+
+@keyframes buttonShine {
+    0%, 65% { left: -80%; }
+    100% { left: 140%; }
+}
+
+@keyframes buttonFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+/* Paparan telefon */
+@media (max-width: 480px) {
+    .cover-card {
+        padding: 32px 22px;
+        border-radius: 130px 130px 22px 22px;
+    }
+
+    .cover-flower { opacity: .45; }
+    .f1 { top: 7%; left: 5%; }
+    .f2 { top: 17%; right: 5%; }
+    .f3 { bottom: 10%; left: 5%; }
+    .f4 { bottom: 7%; right: 5%; }
+}
+
+/* Hormati tetapan kurang animasi */
+@media (prefers-reduced-motion: reduce) {
+    .cover-light,
+    .cover-flower,
+    .cover-card,
+    .cover-content > *,
+    .cover-divider span,
+    .cover-sparkle,
+    .cover-open-btn,
+    .button-shine {
+        animation: none !important;
+    }
+}
+
     </style>
 </head>
 <body class="relative min-h-screen antialiased luxury-pattern-bg">
@@ -391,20 +894,70 @@
         </div>
     </div>
 
-    <!-- Cover Screen / Front Page -->
-    <div id="cover-screen" class="fixed inset-0 z-50 flex flex-col items-center justify-center bg-[#fdfbf7]/95 p-6 text-center backdrop-blur-md">
-        <div class="theme-border max-w-md w-full p-8 md:p-10 rounded-2xl relative overflow-hidden">
-            
-            <p class="text-[11px] tracking-[0.35em] uppercase text-[#8a7070] font-medium mb-3">Walimatul Urus</p>
-            <h1 class="font-cursive text-5xl md:text-6xl text-[#3e3535] my-5 drop-shadow-sm">Zulhilmi &amp; Maryam</h1>
-            <p class="text-sm text-[#665c5c] font-serif-luxury italic mb-8">Sabtu, 5 Disember 2026</p>
 
-            <button id="btn-open" class="bg-[#b76e79] text-white px-8 py-3.5 rounded-full font-medium shadow-md hover:shadow-lg hover:bg-[#9c5c67] transition-all duration-300 transform active:scale-95 border border-[#c5838e] relative z-10 tracking-wide text-sm">
-                <i class="fas fa-envelope-open mr-2"></i> Buka Kad Jemputan
+<!-- Premium Animated Wedding Cover -->
+<div id="cover-screen"
+     class="fixed inset-0 z-50 flex flex-col items-center justify-center
+            bg-[#fdfbf7]/95 p-6 text-center backdrop-blur-md">
+
+    <!-- Cahaya lembut di latar -->
+    <div class="cover-light"></div>
+
+    <!-- Bunga terapung -->
+    <div class="cover-flower f1">🌸</div>
+    <div class="cover-flower f2">✿</div>
+    <div class="cover-flower f3">🌷</div>
+    <div class="cover-flower f4">✿</div>
+    <div class="cover-flower f5">❀</div>
+    <div class="cover-flower f6">🌸</div>
+
+    <!-- Bingkai kad -->
+    <div class="theme-border cover-card max-w-md w-full p-8 md:p-10
+                rounded-2xl relative overflow-hidden">
+
+        <!-- Kilauan hiasan -->
+        <span class="cover-sparkle sparkle-1">✧</span>
+        <span class="cover-sparkle sparkle-2">✦</span>
+        <span class="cover-sparkle sparkle-3">✧</span>
+
+        <div class="cover-content relative z-10">
+
+            <p class="text-[11px] tracking-[0.35em] uppercase
+                      text-[#8a7070] font-medium mb-3">
+                Walimatul Urus
+            </p>
+
+            <div class="cover-divider">
+                <span>❦</span>
+            </div>
+
+            <h1 class="font-cursive text-5xl md:text-6xl
+                       text-rosegold my-5 drop-shadow-sm">
+                Zulhilmi &amp; Maryam
+            </h1>
+
+            <p class="text-sm text-[#665c5c]
+                      font-serif-luxury italic mb-8">
+                Sabtu, 5 Disember 2026
+            </p>
+
+            <button id="btn-open"
+                    class="cover-open-btn relative z-10">
+                <i class="fas fa-envelope-open mr-2"></i>
+                Buka Kad Jemputan
+                <span class="button-shine"></span>
             </button>
+
+            <p class="text-[10px] tracking-[0.2em] uppercase
+                      text-[#9c7a7e] mt-6">
+                Dengan penuh kasih dan restu
+            </p>
 
         </div>
     </div>
+</div>
+
+    
 
     <!-- Main Content Container -->
     <div id="main-content" class="relative z-10 hidden opacity-0 transition-opacity duration-700 max-w-2xl mx-auto px-4 py-8 space-y-12">
