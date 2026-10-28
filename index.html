@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Walimatul Urus | Zulhilmi & Maryam</title>
 
-
 <!-- Open Graph: WhatsApp Link Preview -->
 <meta property="og:type" content="website">
 <meta property="og:locale" content="ms_MY">
@@ -183,6 +182,7 @@
         /* Professional Rose Gold Gradient Text */
         .text-rosegold {
             background: linear-gradient(to right, #9c5c67, #c5838e);
+            background-clip: text;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
@@ -714,7 +714,7 @@
     </div>
 
     <!-- Bottom Navigation Bar -->
-    <!-- <div id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 hidden transition-all duration-500">
+    <div id="bottom-nav" class="fixed bottom-0 left-0 right-0 z-40 hidden transition-all duration-500">
         <div class="max-w-md mx-auto bg-white/95 backdrop-blur-lg border-t border-[#e8d5d5] shadow-[0_-10px_25px_rgba(0,0,0,0.05)] px-3 py-2 flex justify-around items-center rounded-t-2xl">
             <button onclick="openModal('call')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
                 <i class="fas fa-phone text-lg text-[#b76e79] mb-0.5"></i>
@@ -737,244 +737,69 @@
                 <span class="text-[10px] font-medium tracking-tight">Masa</span>
             </button>
         </div>
-    </div> -->
-<!-- Top Navigation Bar -->
-<!-- <div id="bottom-nav" class="fixed top-3 left-0 right-0 z-40 hidden transition-all duration-500 px-4">
-    <div class="max-w-md mx-auto bg-white/95 backdrop-blur-lg border border-[#e8d5d5] shadow-lg px-3 py-2 flex justify-around items-center rounded-2xl">
-        <button onclick="openModal('call')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
-            <i class="fas fa-phone text-lg text-[#b76e79] mb-0.5"></i>
-            <span class="text-[10px] font-medium tracking-tight">Call</span>
-        </button>
-
-        <button onclick="openModal('lokasi')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
-            <i class="fas fa-location-dot text-lg text-[#b76e79] mb-0.5"></i>
-            <span class="text-[10px] font-medium tracking-tight">Lokasi</span>
-        </button>
-
-        <button onclick="openModal('rsvp')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
-            <i class="fas fa-envelope-open-text text-lg text-[#b76e79] mb-0.5"></i>
-            <span class="text-[10px] font-medium tracking-tight">RSVP</span>
-        </button>
-
-        <button onclick="openModal('hadiah')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
-            <i class="fas fa-gift text-lg text-[#b76e79] mb-0.5"></i>
-            <span class="text-[10px] font-medium tracking-tight">Hadiah</span>
-        </button>
-
-        <button onclick="openModal('masa')" class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
-            <i class="fas fa-clock text-lg text-[#b76e79] mb-0.5"></i>
-            <span class="text-[10px] font-medium tracking-tight">Masa</span>
-        </button>
     </div>
-</div> -->
-<!-- Premium Floating Navigation Bar -->
-<div id="bottom-nav"
-     class="fixed top-3 left-0 right-0 z-40 hidden px-3 transition-all duration-500">
 
-    <nav class="relative max-w-md mx-auto overflow-hidden
-                rounded-2xl border border-white/80
-                bg-white/85 backdrop-blur-xl
-                shadow-[0_8px_30px_rgba(156,92,103,0.16)]">
+    <!-- Premium Animated Wedding Cover -->
+    <div id="cover-screen"
+         class="fixed inset-0 z-50 flex flex-col items-center justify-center
+                bg-[#fdfbf7]/95 p-6 text-center backdrop-blur-md">
 
-        <!-- Rose Gold Accent -->
-        <div class="absolute top-0 left-8 right-8 h-[2px]
-                    bg-gradient-to-r from-transparent
-                    via-[#c5838e] to-transparent"></div>
+        <!-- Cahaya lembut di latar -->
+        <div class="cover-light"></div>
 
-        <div class="flex items-center justify-around px-1.5 py-2.5">
+        <!-- Bunga terapung -->
+        <div class="cover-flower f1">🌸</div>
+        <div class="cover-flower f2">✿</div>
+        <div class="cover-flower f3">🌷</div>
+        <div class="cover-flower f4">✿</div>
+        <div class="cover-flower f5">❀</div>
+        <div class="cover-flower f6">🌸</div>
 
-            <!-- Call -->
-            <button onclick="openModal('call')"
-                    aria-label="Hubungi Kami"
-                    class="group flex flex-col items-center justify-center
-                           gap-1 w-1/5 py-1 rounded-xl
-                           transition-all duration-300
-                           hover:bg-[#fdf2f3] active:scale-90">
-                <span class="flex items-center justify-center
-                             w-10 h-9 rounded-xl
-                             text-[#b76e79]
-                             transition-all duration-300
-                             group-hover:bg-[#f5e3e6]
-                             group-hover:-translate-y-0.5">
-                    <i class="fas fa-phone-volume text-lg"></i>
-                </span>
-                <span class="text-[10px] font-medium tracking-wide
-                             text-[#716366] group-hover:text-[#9c5c67]">
-                    Call
-                </span>
-            </button>
+        <!-- Bingkai kad -->
+        <div class="theme-border cover-card max-w-md w-full p-8 md:p-10
+                    rounded-2xl relative overflow-hidden">
 
-            <!-- Lokasi -->
-            <button onclick="openModal('lokasi')"
-                    aria-label="Lokasi Majlis"
-                    class="group flex flex-col items-center justify-center
-                           gap-1 w-1/5 py-1 rounded-xl
-                           transition-all duration-300
-                           hover:bg-[#fdf2f3] active:scale-90">
-                <span class="flex items-center justify-center
-                             w-10 h-9 rounded-xl text-[#b76e79]
-                             transition-all duration-300
-                             group-hover:bg-[#f5e3e6]
-                             group-hover:-translate-y-0.5">
-                    <i class="fas fa-location-dot text-lg"></i>
-                </span>
-                <span class="text-[10px] font-medium tracking-wide
-                             text-[#716366] group-hover:text-[#9c5c67]">
-                    Lokasi
-                </span>
-            </button>
+            <!-- Kilauan hiasan -->
+            <span class="cover-sparkle sparkle-1">✧</span>
+            <span class="cover-sparkle sparkle-2">✦</span>
+            <span class="cover-sparkle sparkle-3">✧</span>
 
-            <!-- RSVP -->
-            <button onclick="openModal('rsvp')"
-                    aria-label="Pengesahan Kehadiran"
-                    class="group flex flex-col items-center justify-center
-                           gap-1 w-1/5 py-1 rounded-xl
-                           transition-all duration-300
-                           hover:bg-[#fdf2f3] active:scale-90">
-                <span class="flex items-center justify-center
-                             w-10 h-9 rounded-xl text-white
-                             bg-gradient-to-br from-[#c5838e] to-[#a95f6d]
-                             shadow-[0_3px_8px_rgba(183,110,121,0.25)]
-                             transition-all duration-300
-                             group-hover:-translate-y-0.5
-                             group-hover:shadow-md">
-                    <i class="fas fa-envelope-open-text text-base"></i>
-                </span>
-                <span class="text-[10px] font-semibold tracking-wide
-                             text-[#9c5c67]">
-                    RSVP
-                </span>
-            </button>
+            <div class="cover-content relative z-10">
 
-            <!-- Hadiah -->
-            <button onclick="openModal('hadiah')"
-                    aria-label="Hadiah"
-                    class="group flex flex-col items-center justify-center
-                           gap-1 w-1/5 py-1 rounded-xl
-                           transition-all duration-300
-                           hover:bg-[#fdf2f3] active:scale-90">
-                <span class="flex items-center justify-center
-                             w-10 h-9 rounded-xl text-[#b76e79]
-                             transition-all duration-300
-                             group-hover:bg-[#f5e3e6]
-                             group-hover:-translate-y-0.5">
-                    <i class="fas fa-gift text-lg"></i>
-                </span>
-                <span class="text-[10px] font-medium tracking-wide
-                             text-[#716366] group-hover:text-[#9c5c67]">
-                    Hadiah
-                </span>
-            </button>
+                <p class="text-[11px] tracking-[0.35em] uppercase
+                          text-[#8a7070] font-medium mb-3">
+                    Walimatul Urus
+                </p>
 
-            <!-- Masa -->
-            <button onclick="openModal('masa')"
-                    aria-label="Aturcara Majlis"
-                    class="group flex flex-col items-center justify-center
-                           gap-1 w-1/5 py-1 rounded-xl
-                           transition-all duration-300
-                           hover:bg-[#fdf2f3] active:scale-90">
-                <span class="flex items-center justify-center
-                             w-10 h-9 rounded-xl text-[#b76e79]
-                             transition-all duration-300
-                             group-hover:bg-[#f5e3e6]
-                             group-hover:-translate-y-0.5">
-                    <i class="fas fa-clock text-lg"></i>
-                </span>
-                <span class="text-[10px] font-medium tracking-wide
-                             text-[#716366] group-hover:text-[#9c5c67]">
-                    Masa
-                </span>
-            </button>
-
-        </div>
-    </nav>
-</div>
-    <!-- Universal Reusable Modal -->
-    <div id="modal-container" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
-        <div class="theme-border w-full max-w-md rounded-2xl p-6 relative max-h-[85vh] overflow-y-auto">
-            <!-- Close Button -->
-            <button onclick="closeModal()" class="absolute top-2 right-2 w-8 h-8 flex items-center justify-center rounded-full bg-[#f8efef] text-[#9c5c67] hover:bg-[#e8d5d5] transition-colors shadow-sm focus:outline-none">
-                <i class="fas fa-times text-sm"></i>
-            </button>
-
-            <!-- Modal Header Title -->
-            <div class="text-center mb-5">
-                <div class="inline-flex items-center justify-center w-12 h-12 rounded-full bg-[#fdfaf8] border border-[#e8d5d5] text-[#b76e79] text-xl mb-2 shadow-inner" id="modal-icon">
-                    <i class="fas fa-info-circle"></i>
+                <div class="cover-divider">
+                    <span>❦</span>
                 </div>
-                <h3 id="modal-title" class="font-serif-luxury text-2xl font-semibold text-[#4a3e3d]"></h3>
-                <div class="h-px w-16 bg-[#d9c5c5] mx-auto mt-2"></div>
-            </div>
 
-            <!-- Modal Dynamic Body Content -->
-            <div id="modal-body" class="space-y-4 text-sm text-gray-700"></div>
+                <h1 class="font-cursive text-3xl md:text-6xl
+                           text-rosegold my-5 drop-shadow-sm">
+                    Zulhilmi &amp;  Maryam
+                </h1>
+
+                <p class="text-sm text-[#665c5c]
+                          font-serif-luxury italic mb-8">
+                    Sabtu, 5 Disember 2026
+                </p>
+
+                <button id="btn-open"
+                        class="cover-open-btn relative z-10">
+                    <i class="fas fa-envelope-open mr-2"></i>
+                    Buka Kad Jemputan
+                    <span class="button-shine"></span>
+                </button>
+
+                <p class="text-[10px] tracking-[0.2em] uppercase
+                          text-[#9c7a7e] mt-6">
+                    Dengan penuh kasih dan restu
+                </p>
+
+            </div>
         </div>
     </div>
-
-
-<!-- Premium Animated Wedding Cover -->
-<div id="cover-screen"
-     class="fixed inset-0 z-50 flex flex-col items-center justify-center
-            bg-[#fdfbf7]/95 p-6 text-center backdrop-blur-md">
-
-    <!-- Cahaya lembut di latar -->
-    <div class="cover-light"></div>
-
-    <!-- Bunga terapung -->
-    <div class="cover-flower f1">🌸</div>
-    <div class="cover-flower f2">✿</div>
-    <div class="cover-flower f3">🌷</div>
-    <div class="cover-flower f4">✿</div>
-    <div class="cover-flower f5">❀</div>
-    <div class="cover-flower f6">🌸</div>
-
-    <!-- Bingkai kad -->
-    <div class="theme-border cover-card max-w-md w-full p-8 md:p-10
-                rounded-2xl relative overflow-hidden">
-
-        <!-- Kilauan hiasan -->
-        <span class="cover-sparkle sparkle-1">✧</span>
-        <span class="cover-sparkle sparkle-2">✦</span>
-        <span class="cover-sparkle sparkle-3">✧</span>
-
-        <div class="cover-content relative z-10">
-
-            <p class="text-[11px] tracking-[0.35em] uppercase
-                      text-[#8a7070] font-medium mb-3">
-                Walimatul Urus
-            </p>
-
-            <div class="cover-divider">
-                <span>❦</span>
-            </div>
-
-            <h1 class="font-cursive text-5xl md:text-6xl
-                       text-rosegold my-5 drop-shadow-sm">
-                Zulhilmi &amp; Maryam
-            </h1>
-
-            <p class="text-sm text-[#665c5c]
-                      font-serif-luxury italic mb-8">
-                Sabtu, 5 Disember 2026
-            </p>
-
-            <button id="btn-open"
-                    class="cover-open-btn relative z-10">
-                <i class="fas fa-envelope-open mr-2"></i>
-                Buka Kad Jemputan
-                <span class="button-shine"></span>
-            </button>
-
-            <p class="text-[10px] tracking-[0.2em] uppercase
-                      text-[#9c7a7e] mt-6">
-                Dengan penuh kasih dan restu
-            </p>
-
-        </div>
-    </div>
-</div>
-
-    
 
     <!-- Main Content Container -->
     <div id="main-content" class="relative z-10 hidden opacity-0 transition-opacity duration-700 max-w-2xl mx-auto px-4 py-8 space-y-12">
@@ -995,7 +820,7 @@
             <div class="py-6 space-y-4">
                 <h2 class="font-cursive text-5xl md:text-6xl text-[#3e3535]">Zulhilmi</h2>
                 <p class="text-xs text-[#706464] max-w-md mx-auto leading-relaxed uppercase tracking-wider">
-                    Putera kepada<br><span class="font-semibold text-[#4a3e3d]">Hasinin bin Kinsim &amp; Juhini @ Juhinih binti Temin</span>
+                    Putera kepada<br><span class="font-semibold text-[#4a3e3d]">Hasinin bin Kinsim<br> &amp;<br> Juhini @ Juhinih binti Temin</span>
                 </p>
 
                 <div class="flex items-center justify-center py-4">
@@ -1006,7 +831,7 @@
 
                 <h2 class="font-cursive text-5xl md:text-6xl text-[#3e3535]">Maryam</h2>
                 <p class="text-xs text-[#706464] max-w-md mx-auto leading-relaxed uppercase tracking-wider">
-                    Puteri kepada<br><span class="font-semibold text-[#4a3e3d]">Nur Taufiq Sufi bin Louis Abdullah &amp; Nur Hidayatul Husna binti Stephen Abdullah</span>
+                    Puteri kepada<br><span class="font-semibold text-[#4a3e3d]">Nur Taufiq Sufi bin Louis Abdullah<br> &amp;<br> Nur Hidayatul Husna binti Stephen Abdullah</span>
                 </p>
             </div>
         </section>
@@ -1122,7 +947,21 @@
         </footer>
     </div>
 
-    <!-- Scripts -->
+    <!-- Modal Container Element -->
+    <div id="modal-container" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/50 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white rounded-2xl max-w-md w-full p-6 relative shadow-2xl border border-[#e8d5d5] max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors w-8 h-8 flex items-center justify-center rounded-full bg-gray-100">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="text-center mb-5">
+                <div id="modal-icon" class="text-2xl text-[#b76e79] mb-1"></div>
+                <h3 id="modal-title" class="font-serif-luxury text-xl font-bold text-[#4a3e3d]"></h3>
+                <div class="h-px w-10 bg-[#d9c5c5] mx-auto mt-2"></div>
+            </div>
+            <div id="modal-body"></div>
+        </div>
+    </div>
+
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
 
     <script>
