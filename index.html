@@ -348,7 +348,7 @@
 
 /* Kemunculan teks berperingkat */
 .cover-content > * {
-    animation: coverReveal 1.1s both;
+    animation: coverReveal 2.1s both;
 }
 
 .cover-content > *:nth-child(1) { animation-delay: 0.15s; }
@@ -627,7 +627,7 @@
     box-shadow: 0 8px 25px rgba(183, 110, 121, .25);
     cursor: pointer;
     transition: box-shadow .3s ease, filter .3s ease;
-    animation: buttonFloat 3.5s ease-in-out infinite;
+    animation: buttonFloat 5.5s ease-in-out infinite;
 }
 
 .cover-open-btn:hover {
@@ -705,11 +705,11 @@
 
     <!-- Audio Element (Fixed for iOS/Safari Autoplay Issues) -->
     <audio id="bg-music" loop preload="auto" playsinline>
-        <source src="./lagu-kahwin.mp3" type="audio/mpeg">
+        <source src="./lagu-kahwin2.mp3" type="audio/mpeg">
     </audio>
 
     <!-- Floating Music Toggle Button -->
-    <div id="audio-control" onclick="toggleAudio()" style="display: none;" class="fixed bottom-20 right-4 z-40 bg-white/95 backdrop-blur-md p-3.5 rounded-full shadow-xl cursor-pointer border border-[#e8d5d5] hover:scale-105 transition-transform duration-300 group">
+    <div id="audio-control" whiteonclick="toggleAudio()" style="display: none;" class="fixed bottom-20 right-4 z-40 bg-/95 backdrop-blur-md p-3.5 rounded-full shadow-xl cursor-pointer border border-[#e8d5d5] hover:scale-105 transition-transform duration-300 group">
         <i id="music-icon" class="fas fa-play-circle text-2xl text-[#b76e79] group-hover:text-[#9c5c67]"></i>
     </div>
 
@@ -1257,6 +1257,7 @@
             },
             masa: {
                 tentatif: [
+                    { time: "09:00 AM", detail: "Majlis Akad Nikah" },
                     { time: "11:00 AM", detail: "Kehadiran Tetamu" },
                     { time: "12:00 PM", detail: "Ketibaan Pengantin" },
                     { time: "01:00 PM", detail: "Bacaan Doa Kesyukuran Dan Jamuan" },
