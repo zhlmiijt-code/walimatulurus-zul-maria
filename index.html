@@ -38,22 +38,37 @@
     <style>
         body {
             font-family: 'Poppins', sans-serif;
-            /* GAMBAR LATAR BELAKANG */
-            background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
-            background-size: cover;
-            background-attachment: fixed;
-            background-position: center;
-            background-repeat: no-repeat;
             color: #3e3838;
             overflow-x: hidden;
+            background-color: #fdfbf7;
         }
 
-        /* Lapisan nipis (overlay) pada gambar supaya teks gelap mudah dibaca */
-        body::before {
-            content: '';
+        /* Latar Belakang Ken Burns (Animasi Premium) */
+        .bg-ken-burns {
+            position: fixed;
+            inset: -5%; /* Lebihkan sedikit ruang untuk animasi bergerak */
+            width: 110%;
+            height: 110%;
+            background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            z-index: -3;
+            animation: kenBurns 25s ease-in-out infinite alternate;
+        }
+
+        @keyframes kenBurns {
+            0% { transform: scale(1) translate(0, 0); }
+            100% { transform: scale(1.08) translate(-1%, -1%); }
+        }
+
+        /* Lapisan nipis (overlay) pada gambar supaya teks gelap amat mudah dibaca */
+        .bg-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(255, 255, 255, 0.35);
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 241, 245, 0.55) 100%);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
             pointer-events: none;
             z-index: -2;
         }
@@ -69,8 +84,8 @@
         /* Reveal animations on scroll */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
-            transition: all 0.8s ease;
+            transform: translateY(40px);
+            transition: opacity 1s cubic-bezier(0.5, 0, 0, 1), transform 1s cubic-bezier(0.5, 0, 0, 1);
         }
 
         .reveal.active {
@@ -80,44 +95,15 @@
 
         /* Music Spin Animation */
         @keyframes spin {
-            from {
-                transform: rotate(0deg);
-            }
-            to {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .spin {
             animation: spin 4s linear infinite;
         }
 
-        /* Ambient Pulsing Glow Animation - More subtle and professional */
-        @keyframes float-glow {
-            0%,
-            100% {
-                transform: translateY(0) scale(1);
-                opacity: 0.2;
-            }
-            50% {
-                transform: translateY(-20px) scale(1.05);
-                opacity: 0.4;
-            }
-        }
-
-        .animate-glow-1 {
-            animation: float-glow 8s ease-in-out infinite;
-        }
-
-        .animate-glow-2 {
-            animation: float-glow 11s ease-in-out infinite 2s;
-        }
-
-        .animate-glow-3 {
-            animation: float-glow 9s ease-in-out infinite 4s;
-        }
-
-        /* Custom Image Border Class for border.jpg */
+        /* Custom Image Border Class (Kaca Premium) */
         .theme-border {
             border-style: solid;
             border-width: 28px;
@@ -125,19 +111,18 @@
             border-image-source: url('./border.jpg');
             border-image-slice: 50;
             border-image-repeat: round;
-            /* KOTAK TRANSPARENT DENGAN KESAN KACA */
-            background-color: rgba(255, 255, 255, 0.35); 
-            backdrop-filter: blur(14px);
-            -webkit-backdrop-filter: blur(14px);
-            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.15);
+            
+            /* KOTAK TRANSPARENT KACA - LEBIH JELAS UNTUK TEKS */
+            background-color: rgba(255, 255, 255, 0.65); 
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
             position: relative;
+            transition: transform 0.3s ease;
         }
-
-        /* Repeating Luxury Background Pattern Overlay (Subtle) */
-        .luxury-pattern-bg {
-            background-image: radial-gradient(rgba(183, 110, 121, 0.05) 1px, transparent 0);
-            background-position: 0 0;
-            background-size: 30px 30px;
+        
+        .theme-border:hover {
+            transform: translateY(-2px);
         }
 
         /* Background Particle Canvas */
@@ -187,14 +172,16 @@
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #e5e7eb;
-            transition: background 0.3s ease, transform 0.3s ease;
+            background: rgba(255,255,255,0.8);
+            border: 1px solid #d9c5c5;
+            transition: all 0.3s ease;
             cursor: pointer;
         }
 
         .gallery-dot.active {
             background: #b76e79;
-            transform: scale(1.2);
+            border-color: #b76e79;
+            transform: scale(1.3);
         }
 
         /* Professional Rose Gold Gradient Text */
@@ -207,7 +194,6 @@
 
         /* =====================================
            PREMIUM WEDDING COVER — SOFT PINK
-           (Consolidated for stability)
         ===================================== */
         #cover-screen {
             position: fixed;
@@ -215,10 +201,10 @@
             z-index: 50;
             isolation: isolate;
             overflow: hidden;
-            /* BACKGROUND COVER TRANSPARENT */
-            background: rgba(255, 255, 255, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            /* BACKGROUND COVER TRANSPARENT LEBIH GELAP SIKIT */
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             transition: transform 1.2s cubic-bezier(.77, 0, .18, 1), opacity 1s ease;
             display: flex;
             flex-direction: column;
@@ -234,35 +220,14 @@
             pointer-events: none;
         }
 
-        /* Cahaya lembut bergerak */
-        .cover-light {
-            position: absolute;
-            inset: -50%;
-            z-index: 0;
-            pointer-events: none;
-            background: conic-gradient(from 0deg,
-                    transparent,
-                    rgba(255, 218, 225, .32),
-                    transparent 25%,
-                    rgba(255, 255, 255, .65),
-                    transparent 55%);
-            animation: coverLight 24s linear infinite;
-        }
-
-        @keyframes coverLight {
-            to {
-                transform: rotate(360deg);
-            }
-        }
-
-        /* Bunga terapung */
+        /* Bunga terapung - Diperkemaskan */
         .cover-flower {
             position: absolute;
             z-index: 2;
             pointer-events: none;
             color: #d69aa5;
-            opacity: .65;
-            filter: drop-shadow(0 5px 10px rgba(183, 110, 121, .15));
+            opacity: .75;
+            filter: drop-shadow(0 5px 8px rgba(183, 110, 121, .2));
             animation: flowerFloat 8s ease-in-out infinite;
         }
 
@@ -274,57 +239,55 @@
         .f6 { top: 48%; right: 4%; font-size: 30px; animation-delay: -5s; }
 
         @keyframes flowerFloat {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-18px) rotate(12deg); }
+            0%, 100% { transform: translateY(0) rotate(0deg) scale(1); }
+            50% { transform: translateY(-15px) rotate(10deg) scale(1.05); }
         }
 
         /* Bingkai kad */
         .cover-card {
             z-index: 1;
-            border: 1px solid rgba(196, 139, 149, .45);
+            /* KAD COVER TRANSPARENT KACA DENGAN TONA PUTIH */
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
             border-radius: 180px 180px 24px 24px;
-            /* KAD COVER TRANSPARENT KACA */
-            background: rgba(255, 255, 255, 0.35);
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
             box-shadow:
-                0 0 0 7px rgba(255, 255, 255, .38),
-                0 20px 60px rgba(183, 110, 121, .15),
-                inset 0 0 35px rgba(255, 230, 234, .28);
+                0 0 0 7px rgba(255, 255, 255, .4),
+                0 25px 50px -12px rgba(0, 0, 0, 0.15),
+                inset 0 0 35px rgba(255, 255, 255, 0.8);
             animation: frameGlow 5s ease-in-out infinite;
             position: relative;
             overflow: hidden;
             width: 100%;
-            max-width: 28rem; /* max-w-md */
-            padding: 4rem 3.5rem; /* p-16 md:p-14 */
+            max-width: 26rem; 
+            padding: 4rem 3rem; 
         }
 
         @keyframes frameGlow {
             0%, 100% {
-                box-shadow: 0 0 0 7px rgba(255, 255, 255, .38),
-                    0 20px 50px rgba(183, 110, 121, .12);
+                box-shadow: 0 0 0 7px rgba(255, 255, 255, .4),
+                    0 25px 50px -12px rgba(0, 0, 0, 0.15);
             }
             50% {
-                box-shadow: 0 0 0 10px rgba(255, 255, 255, .55),
-                    0 24px 65px rgba(183, 110, 121, .23);
+                box-shadow: 0 0 0 10px rgba(255, 255, 255, .6),
+                    0 30px 60px -12px rgba(183, 110, 121, 0.2);
             }
         }
 
         /* Kemunculan teks */
         .cover-content > * {
-            animation: coverReveal 1s ease both;
+            animation: coverReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
 
-        .cover-content > *:nth-child(1) { animation-delay: .15s; }
-        .cover-content > *:nth-child(2) { animation-delay: .3s; }
-        .cover-content > *:nth-child(3) { animation-delay: .45s; }
-        .cover-content > *:nth-child(4) { animation-delay: .6s; }
-        .cover-content > *:nth-child(5) { animation-delay: .75s; }
-        .cover-content > *:nth-child(6) { animation-delay: .9s; }
+        .cover-content > *:nth-child(1) { animation-delay: .2s; }
+        .cover-content > *:nth-child(2) { animation-delay: .4s; }
+        .cover-content > *:nth-child(3) { animation-delay: .6s; }
+        .cover-content > *:nth-child(4) { animation-delay: .8s; }
+        .cover-content > *:nth-child(5) { animation-delay: 1.0s; }
 
         @keyframes coverReveal {
-            from { opacity: 0; transform: translateY(16px); }
-            to { opacity: 1; transform: translateY(0); }
+            from { opacity: 0; transform: translateY(20px) scale(0.95); }
+            to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
         /* Garisan hiasan */
@@ -333,30 +296,20 @@
             align-items: center;
             justify-content: center;
             gap: 12px;
-            margin: 14px auto;
-            color: #bc818b;
+            margin: 16px auto;
+            color: #b76e79;
         }
 
         .cover-divider::before,
         .cover-divider::after {
             content: "";
-            width: 55px;
+            width: 60px;
             height: 1px;
-            background: linear-gradient(90deg, transparent, #c9949d);
+            background: linear-gradient(90deg, transparent, #b76e79);
         }
 
         .cover-divider::after {
             transform: rotate(180deg);
-        }
-
-        .cover-divider span {
-            font-size: 22px;
-            animation: dividerPulse 3s ease-in-out infinite;
-        }
-
-        @keyframes dividerPulse {
-            0%, 100% { opacity: .65; transform: scale(1); }
-            50% { opacity: 1; transform: scale(1.15); }
         }
 
         /* Kilauan dalam bingkai */
@@ -368,13 +321,13 @@
             animation: sparkleTwinkle 3s ease-in-out infinite;
         }
 
-        .sparkle-1 { top: 22%; left: 12%; font-size: 23px; }
-        .sparkle-2 { top: 42%; right: 10%; font-size: 17px; animation-delay: 1s; }
-        .sparkle-3 { bottom: 18%; left: 18%; font-size: 19px; animation-delay: 2s; }
+        .sparkle-1 { top: 20%; left: 15%; font-size: 20px; }
+        .sparkle-2 { top: 40%; right: 12%; font-size: 15px; animation-delay: 1s; }
+        .sparkle-3 { bottom: 22%; left: 20%; font-size: 18px; animation-delay: 2s; }
 
         @keyframes sparkleTwinkle {
-            0%, 100% { opacity: .25; transform: scale(.75) rotate(0deg); }
-            50% { opacity: 1; transform: scale(1.2) rotate(20deg); }
+            0%, 100% { opacity: .2; transform: scale(.7) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(15deg); }
         }
 
         /* Butang buka kad */
@@ -382,42 +335,41 @@
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            gap: 5px;
-            padding: 15px 28px;
-            border: 1px solid #d4a0a8;
+            gap: 8px;
+            padding: 16px 32px;
             border-radius: 999px;
             overflow: hidden;
             color: white;
-            font-size: 13px;
-            font-weight: 500;
-            letter-spacing: .04em;
-            background: linear-gradient(135deg, #b76e79, #d49aa2, #a85e6b);
-            box-shadow: 0 8px 25px rgba(183, 110, 121, .25);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: .05em;
+            background: linear-gradient(135deg, #b76e79, #d49aa2);
+            box-shadow: 0 10px 30px rgba(183, 110, 121, .3);
             cursor: pointer;
-            transition: box-shadow .3s ease, filter .3s ease;
-            animation: buttonFloat 5.5s ease-in-out infinite;
+            transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
             position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
         .cover-open-btn:hover {
-            box-shadow: 0 12px 32px rgba(183, 110, 121, .4);
-            filter: brightness(1.06);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 35px rgba(183, 110, 121, .45);
         }
 
         .cover-open-btn:active {
-            filter: brightness(.95);
+            transform: translateY(1px);
         }
 
         .button-shine {
             position: absolute;
             top: -50%;
             left: -80%;
-            width: 40%;
+            width: 50%;
             height: 200%;
             transform: rotate(25deg);
-            background: rgba(255, 255, 255, .38);
+            background: linear-gradient(to right, transparent, rgba(255, 255, 255, .6), transparent);
             pointer-events: none;
-            animation: buttonShine 4s ease-in-out infinite;
+            animation: buttonShine 3s ease-in-out infinite;
         }
 
         @keyframes buttonShine {
@@ -425,41 +377,28 @@
             100% { left: 140%; }
         }
 
-        @keyframes buttonFloat {
-            0%, 100% { transform: translateY(0); }
-            50% { transform: translateY(-4px); }
-        }
-
         /* Paparan telefon */
         @media (max-width: 480px) {
             .cover-card {
-                padding: 32px 22px;
-                border-radius: 130px 130px 22px 22px;
+                padding: 32px 20px;
+                border-radius: 140px 140px 22px 22px;
             }
+        }
 
-            .cover-flower {
-                opacity: .45;
-            }
-
-            .f1 { top: 7%; left: 5%; }
-            .f2 { top: 17%; right: 5%; }
-            .f3 { bottom: 10%; left: 5%; }
-            .f4 { bottom: 7%; right: 5%; }
+        /* Modal Glassmorphism */
+        .modal-glass {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.9);
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
         /* Hormati tetapan kurang animasi */
         @media (prefers-reduced-motion: reduce) {
-            .cover-light,
-            .cover-flower,
-            .cover-card,
-            .cover-content > *,
-            .cover-divider span,
-            .cover-sparkle,
-            .cover-open-btn,
-            .button-shine,
-            #cover-screen::before,
-            .cover-frame {
+            * {
                 animation: none !important;
+                transition: none !important;
             }
         }
     </style>
@@ -467,12 +406,9 @@
 
 <body class="relative min-h-screen antialiased luxury-pattern-bg">
 
-    <!-- Subtle Ambient Background Orbs -->
-    <div class="fixed inset-0 z-0 pointer-events-none overflow-hidden">
-        <div class="absolute -top-28 -left-28 w-[28rem] h-[28rem] bg-[#f2e6e1] rounded-full filter blur-3xl animate-glow-1"></div>
-        <div class="absolute top-1/3 -right-28 w-[30rem] h-[30rem] bg-[#f5ebeb] rounded-full filter blur-3xl animate-glow-2"></div>
-        <div class="absolute bottom-10 -left-20 w-96 h-96 bg-[#ede4e4] rounded-full filter blur-3xl animate-glow-1"></div>
-    </div>
+    <!-- Animasi Ken Burns Background -->
+    <div class="bg-ken-burns"></div>
+    <div class="bg-overlay"></div>
 
     <!-- Particles Background -->
     <div id="particles-js"></div>
@@ -1050,7 +986,7 @@
             updateGallery(false);
         });
 
-        // KONFIGURASI JEMPUTAN (2 Lokasi Ditambah)
+        // KONFIGURASI JEMPUTAN (Lokasi & Masa Dikemaskini)
         const INVITATION_CONFIG = {
             call: [
                 { role: "Bapa Pengantin Lelaki", name: "HASININ", phone: "+60165824470" },
@@ -1059,23 +995,24 @@
                 { role: "Bapa Pengantin Perempuan", name: "TAUFIQ", phone: "+60147039503" },
                 { role: "Ibu Pengantin Perempuan", name: "HIDAYAH", phone: "+601127842603" }
             ],
-            // Lokasi diubah kepada Array (Mengandungi 2 senarai lokasi berbeza)
             lokasi: [
                 {
                     title: "Walimatul Urus (Pihak Perempuan)",
+                    tarikh: "Sabtu, 5 Disember 2026",
                     venue: "Kediaman Pengantin Perempuan",
                     address: "Kg Kayul, Kuala Penyu, Sabah",
-                    embedUrl: "https://maps.google.com/maps?q=5.5062792,115.5570494&hl=ms&z=15&output=embed",
+                    embedUrl: "https://maps.google.com/maps?q=5.5062792,115.5570494&hl=ms&t=h&z=15&output=embed",
                     googleMapsUrl: "https://www.google.com/maps/search/?api=1&query=5.5062792,115.5570494",
                     wazeUrl: "https://waze.com/ul?ll=5.5062792,115.5570494&navigate=yes"
                 },
                 {
                     title: "Majlis Sambut Menantu (Pihak Lelaki)",
+                    tarikh: "Selasa, 8 Disember 2026",
                     venue: "Kediaman Pengantin Lelaki",
-                    address: "Sila rujuk pautan peta untuk lokasi penuh",
-                    embedUrl: "https://maps.google.com/maps?q=Kuala+Penyu,+Sabah&hl=ms&z=12&output=embed",
-                    googleMapsUrl: "https://maps.app.goo.gl/BTmF37exfe7U3eRG7", 
-                    wazeUrl: "https://maps.app.goo.gl/BTmF37exfe7U3eRG7" 
+                    address: "Kg Terolobou, Ranau, Sabah", 
+                    embedUrl: "https://maps.google.com/maps?q=Kg+Terolobou,+Ranau,+Sabah&hl=ms&t=h&z=14&output=embed",
+                    googleMapsUrl: "https://maps.app.goo.gl/rQXVwH2preHTGhcFA", 
+                    wazeUrl: "https://waze.com/ul?q=Kg+Terolobou+Ranau&navigate=yes" 
                 }
             ],
             hadiah: {
@@ -1084,15 +1021,28 @@
                 accName: "ZULHILMI IZZAT BIN HASININ",
                 qrCodeUrl: "qrcode.jpg"
             },
-            masa: {
-                tentatif: [
-                    { time: "09:00 AM", detail: "Majlis Akad Nikah" },
-                    { time: "11:00 AM", detail: "Kehadiran Tetamu" },
-                    { time: "12:00 PM", detail: "Ketibaan Pengantin" },
-                    { time: "01:00 PM", detail: "Bacaan Doa Kesyukuran Dan Jamuan" },
-                    { time: "05:00 PM", detail: "Majlis Dijangka Selesai" }
-                ]
-            }
+            // Aturcara dipisahkan mengikut Majlis supaya tetamu tak keliru
+            masa: [
+                {
+                    title: "Majlis Pihak Perempuan (5 Dis)",
+                    tentatif: [
+                        { time: "09:00 AM", detail: "Majlis Akad Nikah" },
+                        { time: "11:00 AM", detail: "Kehadiran Tetamu" },
+                        { time: "12:00 PM", detail: "Ketibaan Pengantin" },
+                        { time: "01:00 PM", detail: "Bacaan Doa Kesyukuran" },
+                        { time: "05:00 PM", detail: "Majlis Selesai" }
+                    ]
+                },
+                {
+                    title: "Majlis Pihak Lelaki (8 Dis)",
+                    tentatif: [
+                        { time: "11:00 AM", detail: "Kehadiran Tetamu" },
+                        { time: "12:30 PM", detail: "Ketibaan Pengantin" },
+                        { time: "01:00 PM", detail: "Jamuan Makan" },
+                        { time: "05:00 PM", detail: "Majlis Selesai" }
+                    ]
+                }
+            ]
         };
 
         window.closeModal = function () {
@@ -1111,6 +1061,10 @@
             const modalIcon = document.getElementById('modal-icon');
             const modalBody = document.getElementById('modal-body');
 
+            // Tambahkan kelas glass pada modal panel
+            const modalPanel = modalContainer.querySelector('div');
+            modalPanel.className = "modal-glass rounded-2xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto";
+
             if (!modalContainer || !modalTitle || !modalIcon || !modalBody) return;
 
             let title = '';
@@ -1124,16 +1078,16 @@
                     ${INVITATION_CONFIG.call.map(contact => {
                     const cleanPhone = contact.phone.replace(/\s+/g, '');
                     return `
-                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-white/60 backdrop-blur-sm border border-white/80 shadow-sm hover:shadow transition-shadow">
+                        <div class="flex items-center justify-between p-3.5 rounded-xl bg-white/70 border border-white shadow-sm hover:shadow transition-all">
                             <div>
                                 <p class="text-[10px] uppercase tracking-wider text-[#8a7070] font-semibold mb-0.5">${contact.role}</p>
                                 <p class="font-bold text-[#4a3e3d] text-sm">${contact.name}</p>
                             </div>
                             <div class="flex space-x-2">
-                                <a href="tel:${cleanPhone}" class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-[#b76e79] shadow-sm hover:bg-[#f8efef] border border-[#f0e6e6] transition-colors">
+                                <a href="tel:${cleanPhone}" class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-[#b76e79] shadow-sm hover:bg-[#f8efef] transition-colors">
                                     <i class="fas fa-phone"></i>
                                 </a>
-                                <a href="https://wa.me/${cleanPhone.replace('+', '')}" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-[#5c9c7c] shadow-sm hover:bg-[#eaf4ef] border border-[#d6e8e0] transition-colors">
+                                <a href="https://wa.me/${cleanPhone.replace('+', '')}" target="_blank" class="w-9 h-9 flex items-center justify-center rounded-full bg-white text-[#5c9c7c] shadow-sm hover:bg-[#eaf4ef] transition-colors">
                                     <i class="fab fa-whatsapp text-lg"></i>
                                 </a>
                             </div>
@@ -1144,26 +1098,28 @@
             else if (type === 'lokasi') {
                 title = 'Lokasi Majlis';
                 iconHtml = '<i class="fas fa-map-marked-alt"></i>';
-                // Penjanaan HTML untuk DUA lokasi dalam satu modal
                 htmlContent = `
                 <div class="text-center space-y-6">
                     ${INVITATION_CONFIG.lokasi.map((loc, index) => `
-                        <div class="pb-1 ${index > 0 ? 'border-t border-[#e8d5d5] pt-5' : ''}">
-                            <p class="text-[10px] uppercase tracking-widest text-[#8a7070] font-bold mb-1">${loc.title}</p>
-                            <p class="font-bold text-[#4a3e3d] text-base mb-1">${loc.venue}</p>
-                            <p class="text-xs text-[#706464] mb-3">${loc.address}</p>
+                        <div class="pb-2 ${index > 0 ? 'border-t border-[#e8d5d5] pt-5' : ''}">
+                            <div class="inline-block bg-[#fdfbf7] px-3 py-1 rounded-full border border-[#e8d5d5] mb-2">
+                                <p class="text-[9px] uppercase tracking-widest text-[#8a7070] font-bold">${loc.tarikh}</p>
+                            </div>
+                            <p class="text-[11px] uppercase tracking-widest text-[#b76e79] font-bold mb-1">${loc.title}</p>
+                            <p class="font-bold text-[#4a3e3d] text-[15px] leading-tight mb-1">${loc.venue}</p>
+                            <p class="text-[12px] text-[#706464] mb-3">${loc.address}</p>
                             
-                            <div class="rounded-xl overflow-hidden border border-[#e8d5d5] shadow-sm h-48 relative bg-gray-50 mb-3">
+                            <div class="rounded-xl overflow-hidden border-2 border-white shadow-sm h-48 relative bg-gray-50 mb-3">
                                 <iframe title="Peta ${loc.title}" width="100%" height="100%" style="border:0;" loading="lazy" src="${loc.embedUrl}"></iframe>
                             </div>
                             
                             <div class="grid grid-cols-2 gap-3 mt-4">
-                                <a href="${loc.googleMapsUrl}" target="_blank" class="flex items-center justify-center space-x-2 bg-white/70 border border-white/80 text-[#5c5050] py-2 rounded-xl shadow-sm hover:bg-white transition-colors font-medium text-xs">
+                                <a href="${loc.googleMapsUrl}" target="_blank" class="flex items-center justify-center space-x-2 bg-white border border-[#e8d5d5] text-[#5c5050] py-2.5 rounded-xl shadow-sm hover:shadow transition-all font-medium text-xs active:scale-95">
                                     <img src="https://upload.wikimedia.org/wikipedia/commons/a/aa/Google_Maps_icon_%282020%29.svg" class="w-4 h-4" alt="GMap">
                                     <span>Google Maps</span>
                                 </a>
-                                <a href="${loc.wazeUrl}" target="_blank" class="flex items-center justify-center space-x-2 bg-white/70 border border-white/80 text-[#5c5050] py-2 rounded-xl shadow-sm hover:bg-white transition-colors font-medium text-xs">
-                                    <i class="fab fa-waze text-blue-400 text-base"></i>
+                                <a href="${loc.wazeUrl}" target="_blank" class="flex items-center justify-center space-x-2 bg-white border border-[#e8d5d5] text-[#5c5050] py-2.5 rounded-xl shadow-sm hover:shadow transition-all font-medium text-xs active:scale-95">
+                                    <i class="fab fa-waze text-blue-500 text-base"></i>
                                     <span>Waze</span>
                                 </a>
                             </div>
@@ -1178,23 +1134,23 @@
                 <form onsubmit="submitRSVPModal(event)" class="space-y-4 text-left">
                     <div>
                         <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Nama Penuh</label>
-                        <input type="text" id="modal-name" required class="w-full bg-white/60 backdrop-blur-sm border border-white/80 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#b76e79] transition-all shadow-sm" placeholder="Masukkan nama anda">
+                        <input type="text" id="modal-name" required class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm" placeholder="Masukkan nama anda">
                     </div>
                     <div>
                         <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Kehadiran</label>
-                        <select id="modal-attendance" onchange="toggleModalPax(this.value)" class="w-full bg-white/60 backdrop-blur-sm border border-white/80 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#b76e79] transition-all shadow-sm text-gray-700">
+                        <select id="modal-attendance" onchange="toggleModalPax(this.value)" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm text-gray-700">
                             <option value="Hadir">Hadir</option>
                             <option value="Tidak Hadir">Tidak Hadir</option>
                         </select>
                     </div>
                     <div id="modal-pax-container">
                         <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Jumlah Kehadiran</label>
-                        <select id="modal-pax" class="w-full bg-white/60 backdrop-blur-sm border border-white/80 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-1 focus:ring-[#b76e79] transition-all shadow-sm text-gray-700">
+                        <select id="modal-pax" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm text-gray-700">
                             ${Array.from({ length: 10 }, (_, i) => `<option value="${i + 1}">${i + 1} Orang</option>`).join('')}
                         </select>
                     </div>
                     <div class="pt-3">
-                        <button type="submit" id="modal-rsvp-btn" class="w-full bg-[#b76e79] hover:bg-[#9c5c67] text-white font-medium py-3 rounded-xl shadow-md transition-all active:scale-[0.98]">
+                        <button type="submit" id="modal-rsvp-btn" class="w-full bg-gradient-to-r from-[#b76e79] to-[#9c5c67] hover:opacity-90 text-white font-semibold py-3.5 rounded-xl shadow-md transition-all active:scale-[0.98] tracking-wide">
                             Hantar RSVP
                         </button>
                     </div>
@@ -1208,11 +1164,11 @@
                     <p class="text-sm text-[#706464] leading-relaxed max-w-sm mx-auto mb-2">
                         Ingatan dan tanda kasih daripada anda amat kami hargai. Namun, doa restu dan kehadiran anda tetap menjadi hadiah yang paling bermakna buat kami.
                     </p>
-                    <div class="bg-white/60 backdrop-blur-sm border border-white/80 rounded-xl p-4 shadow-sm inline-block mx-auto mb-2">
-                        <div class="w-48 h-48 mx-auto bg-gray-50 rounded-lg overflow-hidden mb-3 border border-gray-100 p-2">
+                    <div class="bg-white/80 border border-white rounded-xl p-4 shadow-sm inline-block mx-auto mb-2">
+                        <div class="w-48 h-48 mx-auto bg-white rounded-lg overflow-hidden mb-3 border border-gray-100 p-2 shadow-inner">
                             <img src="${INVITATION_CONFIG.hadiah.qrCodeUrl}" alt="QR Code Bank" id="qr-code-image" class="w-full h-full object-contain">
                         </div>
-                        <button onclick="downloadQR()" class="w-full bg-white/80 hover:bg-white text-[#8a7070] border border-white font-medium py-2 px-4 rounded-lg text-sm transition-colors flex items-center justify-center space-x-2">
+                        <button onclick="downloadQR()" class="w-full bg-[#fdfbf7] hover:bg-[#f5ebeb] text-[#8a7070] border border-[#e8d5d5] font-medium py-2 px-4 rounded-lg text-sm transition-colors flex items-center justify-center space-x-2">
                             <i class="fas fa-download"></i>
                             <span>Simpan QR</span>
                         </button>
@@ -1222,13 +1178,13 @@
                         <span class="text-[10px] uppercase tracking-widest text-[#8a7070] font-bold">ATAU</span>
                         <div class="h-px w-12 bg-[#8a7070]"></div>
                     </div>
-                    <div class="bg-white/50 backdrop-blur-sm border border-white/80 rounded-xl p-4 shadow-sm text-left">
-                        <p class="text-[10px] uppercase tracking-widest text-[#8a7070] font-bold mb-1">Pindahan Bank</p>
+                    <div class="bg-white/70 border border-white rounded-xl p-4 shadow-sm text-left">
+                        <p class="text-[10px] uppercase tracking-widest text-[#b76e79] font-bold mb-1">Pindahan Bank</p>
                         <p class="text-sm font-semibold text-[#4a3e3d]">${INVITATION_CONFIG.hadiah.bankName}</p>
                         
-                        <div class="flex items-center justify-between bg-white/70 border border-white p-2.5 rounded-lg mt-2">
+                        <div class="flex items-center justify-between bg-white border border-gray-100 p-3 rounded-lg mt-2 shadow-inner">
                             <p class="text-lg font-bold tracking-wider text-[#4a3e3d] font-mono">${INVITATION_CONFIG.hadiah.accNumber}</p>
-                            <button onclick="copyAccNumber()" class="w-8 h-8 flex items-center justify-center rounded-md bg-[#f8efef] text-[#b76e79] hover:bg-[#e8d5d5] transition-colors" title="Salin Akaun">
+                            <button onclick="copyAccNumber()" class="w-9 h-9 flex items-center justify-center rounded-md bg-[#f8efef] text-[#b76e79] hover:bg-[#e8d5d5] transition-colors" title="Salin Akaun">
                                 <i class="far fa-copy"></i>
                             </button>
                         </div>
@@ -1239,15 +1195,25 @@
             else if (type === 'masa') {
                 title = 'Aturcara Majlis';
                 iconHtml = '<i class="fas fa-clipboard-list"></i>';
+                // Penjanaan Dua jadual waktu (Aturcara)
                 htmlContent = `
-                <div class="space-y-3 relative mt-2">
-                    <div class="absolute left-[15px] top-4 bottom-4 w-px bg-white/80"></div>
-                    ${INVITATION_CONFIG.masa.tentatif.map(item => `
-                        <div class="relative pl-10 pr-2 py-2">
-                            <div class="absolute left-[11.5px] top-1/2 -translate-y-1/2 w-2 h-2 bg-[#b76e79] rounded-full border border-white"></div>
-                            <div class="bg-white/60 backdrop-blur-sm p-3 rounded-lg border border-white/80 shadow-sm">
-                                <span class="block font-bold text-[#9c5c67] text-[11px] uppercase tracking-wider mb-1">${item.time}</span>
-                                <span class="text-[#4a3e3d] text-sm font-medium">${item.detail}</span>
+                <div class="space-y-6 text-left">
+                    ${INVITATION_CONFIG.masa.map((majlis, index) => `
+                        <div class="${index > 0 ? 'border-t border-[#e8d5d5] pt-5' : ''}">
+                            <p class="text-[11px] uppercase tracking-widest text-[#b76e79] font-bold mb-4 text-center">
+                                ${majlis.title}
+                            </p>
+                            <div class="space-y-3 relative mt-2">
+                                <div class="absolute left-[15px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#e8d5d5] to-transparent rounded-full"></div>
+                                ${majlis.tentatif.map(item => `
+                                    <div class="relative pl-10 pr-2 py-1.5">
+                                        <div class="absolute left-[11px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] bg-[#b76e79] rounded-full border-2 border-white shadow-sm z-10"></div>
+                                        <div class="bg-white/80 p-3.5 rounded-xl border border-white shadow-sm hover:shadow transition-shadow">
+                                            <span class="block font-bold text-[#9c5c67] text-[11px] uppercase tracking-wider mb-0.5">${item.time}</span>
+                                            <span class="text-[#4a3e3d] text-sm font-medium leading-tight">${item.detail}</span>
+                                        </div>
+                                    </div>
+                                `).join('')}
                             </div>
                         </div>
                     `).join('')}
