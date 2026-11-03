@@ -820,6 +820,56 @@
             const musicIcon = document.getElementById('music-icon');
             let isPlaying = false;
 
+            // --- AUTO SCROLL ELEGAN LOGIC ---
+            let autoScrollActive = false;
+            let autoScrollReqId = null;
+
+            function initElegantAutoScroll() {
+                // Hormati tetapan "reduced motion" pengguna (Accessibility)
+                if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                    return;
+                }
+
+                autoScrollActive = true;
+                
+                // Mulakan scroll selepas 2 saat (Beri masa tetamu tengok design atas)
+                setTimeout(() => {
+                    if (autoScrollActive) {
+                        autoScrollReqId = requestAnimationFrame(performAutoScroll);
+                    }
+                }, 2000);
+            }
+
+            function performAutoScroll() {
+                if (!autoScrollActive) return;
+
+                // Jika sudah sampai ke bahagian bawah skrin, hentikan auto scroll
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 2) {
+                    autoScrollActive = false;
+                    return;
+                }
+
+                // Scroll dengan sangat perlahan dan natural (0.3px setiap frame)
+                window.scrollBy(0, 0.3);
+                
+                autoScrollReqId = requestAnimationFrame(performAutoScroll);
+            }
+
+            function stopAutoScroll() {
+                autoScrollActive = false;
+                if (autoScrollReqId) {
+                    cancelAnimationFrame(autoScrollReqId);
+                    autoScrollReqId = null;
+                }
+            }
+
+            // Hentikan auto-scroll jika pengguna berinteraksi (Scroll sendiri, tekan, klik, swipe)
+            window.addEventListener('wheel', stopAutoScroll, { passive: true });
+            window.addEventListener('touchstart', stopAutoScroll, { passive: true });
+            window.addEventListener('mousedown', stopAutoScroll, { passive: true });
+            window.addEventListener('keydown', stopAutoScroll, { passive: true });
+            // --- TAMAT AUTO SCROLL LOGIC ---
+
             if (bgMusic) {
                 bgMusic.addEventListener('play', () => {
                     isPlaying = true;
@@ -853,6 +903,10 @@
                         const bottomNav = document.getElementById('bottom-nav');
                         if (bottomNav) bottomNav.classList.remove('hidden');
                         initReveal();
+
+                        // Jalankan Auto Scroll 
+                        initElegantAutoScroll();
+
                     }, 400);
 
                     playAudio();
@@ -1439,6 +1493,7 @@
         updateCountdown2();
         setInterval(updateCountdown2, 1000);
     </script>
+    
 </body>
 
 </html>
