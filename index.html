@@ -36,12 +36,137 @@
     <script src="https://cdn.tailwindcss.com"></script>
 
     <style>
+        /* =========================================================
+           KEMASAN UI BARU: WARNA TEKS, TIPOGRAFI & BORDER
+           ========================================================= */
+
         body {
             font-family: 'Poppins', sans-serif;
-            color: #3e3838;
+            color: #352A2A; 
             overflow-x: hidden;
             background-color: #fdfbf7;
         }
+
+        /* --- PENAMBAHBAIKAN WARNA TEKS --- */
+        .text-\[\#5c5050\], .text-\[\#706464\], .text-\[\#4a3e3d\], .text-\[\#3e3535\] {
+            color: #352A2A !important; 
+        }
+        
+        .text-\[\#8a7070\], .text-\[\#9c7a7e\] {
+            color: #8B5A53 !important; 
+            font-weight: 500;
+            letter-spacing: 0.15em;
+        }
+
+        .text-\[\#b76e79\] {
+            color: #B76E79 !important; 
+        }
+
+        .bg-\[\#d9c5c5\] {
+            background-color: #D4B5B0 !important; 
+        }
+
+        /* --- KEMASAN TIPOGRAFI --- */
+        .font-serif-luxury {
+            font-family: 'Playfair Display', serif;
+            letter-spacing: 0.03em;
+        }
+
+        .font-cursive {
+            font-family: 'Great Vibes', cursive;
+            text-shadow: 1px 1px 2px rgba(183, 110, 121, 0.15); 
+        }
+
+        p {
+            line-height: 1.8 !important;
+        }
+
+        /* --- KEMASAN BORDER & KACA PREMIUM (.theme-border) --- */
+        .theme-border {
+            border-style: solid;
+            border-width: 20px; 
+            border-color: transparent;
+            border-image-width: 20px;
+
+            /* Image Border */
+            border-image-source: url('./border.jpg');
+            border-image-slice: 60;
+            border-image-repeat: round; 
+
+            /* Premium Glass Effect yang diperjelas */
+            background-color: rgba(255, 252, 248, 0.90) !important;
+            backdrop-filter: blur(14px) !important;
+            -webkit-backdrop-filter: blur(14px) !important;
+
+            /* Shadow asal (hanya dikekalkan untuk elemen selain section) */
+            box-shadow:
+                0 15px 40px rgba(139, 90, 83, 0.12),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.7) !important;
+
+            position: relative;
+            transition: transform 0.3s ease;
+            padding: 2.5rem 1.5rem !important; 
+        }
+
+        /* === KEMASAN BARU: BUCU BORDER MEMBULAT UNTUK KOTAK KANDUNGAN === */
+        section.theme-border {
+            border-radius: 24px !important;
+            
+            /* Trik clip-path: Memaksa border-image terpotong melengkung di setiap bucu */
+            clip-path: inset(0 round 24px); 
+            
+            /* Gantikan outer box-shadow dengan drop-shadow filter supaya 
+               bayang tidak hilang selepas elemen dikerat oleh clip-path */
+            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7) !important;
+            filter: drop-shadow(0 15px 25px rgba(139, 90, 83, 0.15));
+        }
+
+        /* Desktop Border Khas */
+        @media (min-width: 768px) {
+            .theme-border {
+                border-width: 32px;
+                border-image-width: 32px;
+                padding: 3.5rem 3rem !important; 
+            }
+            
+            /* Bucu bulat lebih besar dan kemas di PC */
+            section.theme-border {
+                border-radius: 36px !important;
+                clip-path: inset(0 round 36px);
+            }
+        }
+
+        .theme-border:hover {
+            transform: translateY(-2px);
+        }
+
+        /* Warna Tajuk/Teks di dalam Border */
+        .theme-border h1,
+        .theme-border h2,
+        .theme-border h3 {
+            color: #8B5A53;
+        }
+
+        .theme-border p {
+            color: #4A3B3B;
+        }
+
+        .theme-border span,
+        .theme-border label {
+            color: #7A5C58;
+        }
+
+        /* --- BUTANG & PAUTAN --- */
+        .cover-open-btn {
+            background: linear-gradient(135deg, #B76E79, #9C5C67) !important;
+            box-shadow: 0 10px 25px rgba(156, 92, 103, 0.35) !important;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        /* =========================================================
+           KOD ASAL DIKEKALKAN SEPENUHNYA DI BAWAH
+           ========================================================= */
 
         /* Latar Belakang Ken Burns (Animasi Premium) */
         .bg-ken-burns {
@@ -49,10 +174,12 @@
             inset: -5%; /* Lebihkan sedikit ruang untuk animasi bergerak */
             width: 110%;
             height: 110%;
-            background-image: url('https://images.unsplash.com/photo-1519741497674-611481863552?ixlib=rb-4.0.3&auto=format&fit=crop&w=2000&q=80');
+            background-image: url('https://www.celebrare.mx/espacios/jardines.png?dpl=dpl_5Yo4WAEHYNESzcqUg3JeS57HSGhV');
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            background-color: rgba(255, 248, 240, 0.25);
+            background-blend-mode: soft-light;
             z-index: -3;
             animation: kenBurns 25s ease-in-out infinite alternate;
         }
@@ -71,14 +198,6 @@
             -webkit-backdrop-filter: blur(4px);
             pointer-events: none;
             z-index: -2;
-        }
-
-        .font-serif-luxury {
-            font-family: 'Playfair Display', serif;
-        }
-
-        .font-cursive {
-            font-family: 'Great Vibes', cursive;
         }
 
         /* Reveal animations on scroll */
@@ -101,28 +220,6 @@
 
         .spin {
             animation: spin 4s linear infinite;
-        }
-
-        /* Custom Image Border Class (Kaca Premium) */
-        .theme-border {
-            border-style: solid;
-            border-width: 28px;
-            border-color: transparent;
-            border-image-source: url('./border.jpg');
-            border-image-slice: 50;
-            border-image-repeat: round;
-            
-            /* KOTAK TRANSPARENT KACA - LEBIH JELAS UNTUK TEKS */
-            background-color: rgba(255, 255, 255, 0.65); 
-            backdrop-filter: blur(16px);
-            -webkit-backdrop-filter: blur(16px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.08), inset 0 0 0 1px rgba(255, 255, 255, 0.5);
-            position: relative;
-            transition: transform 0.3s ease;
-        }
-        
-        .theme-border:hover {
-            transform: translateY(-2px);
         }
 
         /* Background Particle Canvas */
@@ -201,7 +298,6 @@
             z-index: 50;
             isolation: isolate;
             overflow: hidden;
-            /* BACKGROUND COVER TRANSPARENT LEBIH GELAP SIKIT */
             background: rgba(255, 255, 255, 0.25);
             backdrop-filter: blur(12px);
             -webkit-backdrop-filter: blur(12px);
@@ -220,7 +316,6 @@
             pointer-events: none;
         }
 
-        /* Bunga terapung - Diperkemaskan */
         .cover-flower {
             position: absolute;
             z-index: 2;
@@ -243,10 +338,8 @@
             50% { transform: translateY(-15px) rotate(10deg) scale(1.05); }
         }
 
-        /* Bingkai kad */
         .cover-card {
             z-index: 1;
-            /* KAD COVER TRANSPARENT KACA DENGAN TONA PUTIH */
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
@@ -274,7 +367,6 @@
             }
         }
 
-        /* Kemunculan teks */
         .cover-content > * {
             animation: coverReveal 1.2s cubic-bezier(0.2, 0.8, 0.2, 1) both;
         }
@@ -290,7 +382,6 @@
             to { opacity: 1; transform: translateY(0) scale(1); }
         }
 
-        /* Garisan hiasan */
         .cover-divider {
             display: flex;
             align-items: center;
@@ -312,7 +403,6 @@
             transform: rotate(180deg);
         }
 
-        /* Kilauan dalam bingkai */
         .cover-sparkle {
             position: absolute;
             z-index: 2;
@@ -330,7 +420,6 @@
             50% { opacity: 1; transform: scale(1.3) rotate(15deg); }
         }
 
-        /* Butang buka kad */
         .cover-open-btn {
             display: inline-flex;
             align-items: center;
@@ -343,17 +432,13 @@
             font-size: 14px;
             font-weight: 600;
             letter-spacing: .05em;
-            background: linear-gradient(135deg, #b76e79, #d49aa2);
-            box-shadow: 0 10px 30px rgba(183, 110, 121, .3);
             cursor: pointer;
-            transition: all .3s cubic-bezier(0.2, 0.8, 0.2, 1);
             position: relative;
             border: 2px solid rgba(255, 255, 255, 0.5);
         }
 
         .cover-open-btn:hover {
             transform: translateY(-3px);
-            box-shadow: 0 15px 35px rgba(183, 110, 121, .45);
         }
 
         .cover-open-btn:active {
@@ -377,7 +462,6 @@
             100% { left: 140%; }
         }
 
-        /* Paparan telefon */
         @media (max-width: 480px) {
             .cover-card {
                 padding: 32px 20px;
@@ -385,7 +469,6 @@
             }
         }
 
-        /* Modal Glassmorphism */
         .modal-glass {
             background: rgba(255, 255, 255, 0.85);
             backdrop-filter: blur(25px);
@@ -394,7 +477,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
         }
 
-        /* Hormati tetapan kurang animasi */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation: none !important;
@@ -458,10 +540,7 @@
 
     <!-- Premium Animated Wedding Cover -->
     <div id="cover-screen">
-        <!-- Cahaya lembut di latar -->
         <div class="cover-light"></div>
-
-        <!-- Bunga terapung -->
         <div class="cover-flower f1">🌸</div>
         <div class="cover-flower f2">✿</div>
         <div class="cover-flower f3">🌷</div>
@@ -471,14 +550,11 @@
 
         <!-- Bingkai kad -->
         <div class="theme-border cover-card">
-
-            <!-- Kilauan hiasan -->
             <span class="cover-sparkle sparkle-1">✧</span>
             <span class="cover-sparkle sparkle-2">✦</span>
             <span class="cover-sparkle sparkle-3">✧</span>
 
             <div class="cover-content relative z-10">
-
                 <p class="text-[16px] tracking-[0.35em] uppercase text-[#8a7070] font-medium mb-4">
                     Walimatul Urus<br>&<br>Majlis Sambut Menantu
                 </p>
@@ -501,31 +577,49 @@
                 <p class="text-[14px] tracking-[0.2em] uppercase text-[#9c7a7e] mt-6">
                     Dengan penuh kasih dan restu
                 </p>
-
             </div>
         </div>
     </div>
 
     <!-- Main Content Container -->
     <div id="main-content"
-        class="relative z-10 hidden opacity-0 transition-opacity duration-700 max-w-2xl mx-auto px-4 py-8 space-y-12">
+        class="relative z-10 hidden opacity-0 transition-opacity duration-700 max-w-2xl mx-auto px-4 py-8 space-y-12 mb-20">
 
         <!-- Hero Section -->
-        <section class="reveal theme-border p-8 md:p-12 rounded-3xl text-center space-y-6">
+        <section class="reveal theme-border rounded-3xl text-center space-y-6">
+            <div class="space-y-3 mb-8">
 
-            <div class="space-y-2 mb-6">
-                <p class="text-sm font-serif-luxury italic text-[#5c5050]">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</p>
-                <p class="text-sm font-serif-luxury italic text-[#5c5050]">Bismillahir Rahmanir Rahim</p>
+    <!-- Bismillah Arabic -->
+    <p class="text-2xl font-serif-luxury italic text-[#5c5050] leading-loose"
+       dir="rtl">
+        بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ
+    </p>
 
-                <div class="h-px w-12 bg-[#d9c5c5] mx-auto my-2"></div>
-                <p class="text-sm font-serif-luxury italic text-[#5c5050]">ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ</p>
-                <p class="text-sm font-serif-luxury italic text-[#5c5050]">Assalamualaikum Warahmatullahi Wabarakatuh</p>
-            </div>
+    <!-- Bismillah Rumi -->
+    <p class="text-sm font-serif-luxury italic text-[#5c5050] tracking-wide">
+        Bismillahir Rahmanir Rahim
+    </p>
 
-            <p class="text-sm leading-relaxed text-[#5c5050] max-w-lg mx-auto">
+    <!-- Divider -->
+    <div class="h-px w-16 bg-[#d9c5c5] mx-auto my-4"></div>
+
+    <!-- Salam Arabic -->
+    <p class="text-xl font-serif-luxury italic text-[#5c5050] leading-loose"
+       dir="rtl">
+        ٱلسَّلَامُ عَلَيْكُمْ وَرَحْمَةُ ٱللَّٰهِ وَبَرَكَاتُهُ
+    </p>
+
+    <!-- Salam Rumi -->
+    <p class="text-sm font-serif-luxury italic text-[#5c5050] tracking-wide">
+        Assalamualaikum Warahmatullahi Wabarakatuh
+    </p>
+
+</div>
+
+            <p class="text-sm leading-relaxed italic text-[#5c5050] max-w-lg mx-auto">
                 Dengan penuh kesyukuran, kami mempersilakan<br>
                 Dato' | Datin | Tuan | Puan | Encik | Cik<br>
-                seisi keluarga hadir ke majlis perkahwinan putera & puteri kami :
+                Serta seisi keluarga untuk hadir ke majlis perkahwinan putera dan puteri kami:
             </p>
 
             <div class="py-1 space-y-1">
@@ -545,21 +639,19 @@
                     Puteri kepada<br><span class="font-semibold text-[#4a3e3d]">Nur Taufiq Sufi bin Louis Abdullah<br> &amp;<br> Nur Hidayatul Husna binti Stephen Abdullah</span>
                 </p>
 
-                <p class="text-sm leading-relaxed text-[#5c5050] max-w-lg mx-auto">
-                    <br><span class="font-serif-luxury italic text-[#b76e79]"></span>Semoga dengan kehadiran dan doa restu daripada semua, majlis ini diberkati Allah SWT dan kedua-dua mempelai dikurniakan rumah tangga yang sakinah, mawaddah wa rahmah.</span>
+                <p class="text-sm leading-relaxed italic text-[#5c5050] max-w-lg mx-auto">
+                    <br>Semoga dengan kehadiran serta doa restu daripada tuan-tuan dan puan-puan, majlis ini diberkati Allah SWT dan kedua-dua mempelai dikurniakan rumah tangga yang sakinah, mawaddah wa rahmah.
                 </p>
             </div>
         </section>
 
         <!-- Date & Countdown Walimatul Urus Maria Section -->
-        <section class="reveal theme-border p-8 rounded-2xl text-center space-y-6">
-
+        <section class="reveal theme-border rounded-2xl text-center space-y-6">
             <div class="space-y-3">
                 <p class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">walimatul urus</p>
             </div>
-            <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">(Rumah Kediaman Pengantin Perempuan)</h3>
+            <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">(Kediaman Pengantin Perempuan)</h3>
 
-            <!-- Elegant Date Display -->
             <div class="space-y-1.5 py-3">
                 <h3 class="font-serif-luxury text-2xl tracking-[0.2em] text-[#4a3e3d] uppercase font-medium">SABTU</h3>
 
@@ -576,7 +668,6 @@
                 <i class="far fa-clock text-sm text-[#b76e79]"></i>
             </div>
 
-            <!-- Countdown Timer Walimatul Urus -->
             <div class="grid grid-cols-4 gap-3 max-w-sm mx-auto my-6">
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="days" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
@@ -603,15 +694,13 @@
         </section>
 
         <!-- Majlis Sambut Tetamu Section -->
-        <section class="reveal theme-border p-8 rounded-2xl text-center space-y-6">
-
+        <section class="reveal theme-border rounded-2xl text-center space-y-6">
             <div class="space-y-3">
                 <p class="text-[11px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">
                     Majlis Sambut Menantu
                 </p>
-                <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">(Rumah Kediaman Pengantin Lelaki)</h3>
+                <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">(Kediaman Pengantin Lelaki)</h3>
 
-                <!-- Elegant Date Display -->
                 <div class="space-y-1.5 py-3">
                     <h3 class="font-serif-luxury text-2xl tracking-[0.2em] text-[#4a3e3d] uppercase font-medium">
                         SELASA
@@ -631,7 +720,6 @@
                 <i class="far fa-clock text-sm text-[#b76e79]"></i>
             </div>
 
-            <!-- Countdown Timer Sambut Menantu -->
             <div class="grid grid-cols-4 gap-3 max-w-sm mx-auto my-6">
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="days2" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
@@ -659,14 +747,12 @@
         </section>
 
         <!-- GALLERY SECTION -->
-        <section class="reveal theme-border p-6 md:p-8 rounded-2xl">
-            <!-- Header -->
+        <section class="reveal theme-border rounded-2xl">
             <div class="text-center mb-6">
-                <p class="text-[16px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">Galleri</p>
+                <p class="text-[16px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">GALERI</p>
                 <div class="h-px w-8 bg-[#d9c5c5] mx-auto mt-3"></div>
             </div>
 
-            <!-- GALLERY -->
             <div class="relative w-full overflow-hidden pb-2">
                 <div id="gallerySlider" class="flex w-full">
                     <div class="gallery-slide">
@@ -687,7 +773,6 @@
                 </div>
             </div>
 
-            <!-- INDICATOR -->
             <div id="galleryIndicators" class="flex justify-center items-center gap-2 mt-4">
                 <!-- Dots -->
             </div>
@@ -723,7 +808,6 @@
     </div>
 
     <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-
     <script>
         const scriptURL = 'https://script.google.com/macros/s/AKfycbzHXOEeLv84_aloPCBHHAAqlMDhgqODPdG2G-vTeCTOYdPNYjV7zShg8qrSpH-vxZR2/exec';
 
@@ -986,7 +1070,6 @@
             updateGallery(false);
         });
 
-        // KONFIGURASI JEMPUTAN (Lokasi & Masa Dikemaskini)
         const INVITATION_CONFIG = {
             call: [
                 { role: "Bapa Pengantin Lelaki", name: "HASININ", phone: "+60165824470" },
@@ -1021,7 +1104,6 @@
                 accName: "ZULHILMI IZZAT BIN HASININ",
                 qrCodeUrl: "qrcode.jpg"
             },
-            // Aturcara dipisahkan mengikut Majlis supaya tetamu tak keliru
             masa: [
                 {
                     title: "Majlis Pihak Perempuan (5 Dis)",
@@ -1061,7 +1143,6 @@
             const modalIcon = document.getElementById('modal-icon');
             const modalBody = document.getElementById('modal-body');
 
-            // Tambahkan kelas glass pada modal panel
             const modalPanel = modalContainer.querySelector('div');
             modalPanel.className = "modal-glass rounded-2xl max-w-md w-full p-6 relative max-h-[90vh] overflow-y-auto";
 
@@ -1161,9 +1242,11 @@
                 iconHtml = '<i class="fas fa-gift"></i>';
                 htmlContent = `
                 <div class="text-center space-y-4">
-                    <p class="text-sm text-[#706464] leading-relaxed max-w-sm mx-auto mb-2">
-                        Ingatan dan tanda kasih daripada anda amat kami hargai. Namun, doa restu dan kehadiran anda tetap menjadi hadiah yang paling bermakna buat kami.
-                    </p>
+                    <p class="text-sm leading-relaxed italic text-[#706464] max-w-lg mx-auto text-center">
+    Ingatan dan tanda kasih daripada anda amat kami hargai.
+    Namun, doa restu serta kehadiran anda tetap menjadi hadiah
+    yang paling bermakna buat kami.
+</p>
                     <div class="bg-white/80 border border-white rounded-xl p-4 shadow-sm inline-block mx-auto mb-2">
                         <div class="w-48 h-48 mx-auto bg-white rounded-lg overflow-hidden mb-3 border border-gray-100 p-2 shadow-inner">
                             <img src="${INVITATION_CONFIG.hadiah.qrCodeUrl}" alt="QR Code Bank" id="qr-code-image" class="w-full h-full object-contain">
@@ -1195,7 +1278,6 @@
             else if (type === 'masa') {
                 title = 'Aturcara Majlis';
                 iconHtml = '<i class="fas fa-clipboard-list"></i>';
-                // Penjanaan Dua jadual waktu (Aturcara)
                 htmlContent = `
                 <div class="space-y-6 text-left">
                     ${INVITATION_CONFIG.masa.map((majlis, index) => `
@@ -1328,7 +1410,6 @@
 
     </script>
     <script>
-        // Countdown Majlis Sambut Tetamu
         function updateCountdown2() {
             const targetDate = new Date("December 8, 2026 00:00:00").getTime();
             const now = new Date().getTime();
