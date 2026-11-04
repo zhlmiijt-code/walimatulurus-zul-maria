@@ -100,7 +100,7 @@
         /* --- KEMASAN BORDER & KACA PREMIUM (.theme-border) --- */
         .theme-border {
             border-style: solid;
-            border-width: 18x;
+            border-width: 18px;
             border-color: transparent;
             border-image-width: 18px;
 
@@ -110,14 +110,14 @@
             border-image-repeat: round;
 
             /* Premium Glass Effect yang diperjelas */
-            background-color: rgba(255, 252, 248, 0.90) !important;
-            backdrop-filter: blur(14px) !important;
-            -webkit-backdrop-filter: blur(14px) !important;
+            background-color: transparent !important;
+            backdrop-filter: blur(18px) !important;
+            -webkit-backdrop-filter: blur(18px) !important;
 
             /* Shadow asal (hanya dikekalkan untuk elemen selain section) */
             box-shadow:
-                0 15px 40px rgba(139, 90, 83, 0.12),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.7) !important;
+                0 15px 40px rgba(116, 54, 44, 0.67),
+                inset 0 0 0 1px rgba(219, 28, 28, 0.7) !important;
 
             position: relative;
             transition: transform 0.3s ease;
@@ -133,43 +133,44 @@
 
             /* Gantikan outer box-shadow dengan drop-shadow filter supaya 
                bayang tidak hilang selepas elemen dikerat oleh clip-path */
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7) !important;
+            box-shadow: inset 0 0 0 1px rgba(19, 1, 1, 0.7) !important;
             filter: drop-shadow(0 15px 25px rgba(139, 90, 83, 0.15));
         }
 
-        /* COVER KAD - SIMPLE PREMIUM BORDER */
-
+        /* COVER KAD - BORDER BUNGA, BENTUK LENGKUNG ASAL */
         #cover-screen .cover-card.theme-border {
-            /* Buang border gambar bunga */
-            border-image: none !important;
-            border: 2px solid #c69b91 !important;
+            /* Gunakan border.jpg yang sama seperti kad kandungan */
+            border: 18px solid rgba(198, 155, 145, 0.45) !important;
+            border-image: url('./border.jpg') 95 / 18px / 0 round !important;
 
-            /* Background lembut & sedikit transparent */
-            background: rgba(255, 250, 247, 0.94) !important;
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            /* Bentuk asal cover: lengkung di atas, bucu lembut di bawah */
+            border-radius: 180px 180px 24px 24px !important;
+            clip-path: inset(0 round 180px 180px 24px 24px);
 
-            /* Kekalkan bentuk lengkung atas */
-            border-radius: 150px 150px 24px 24px !important;
+            /* Warna latar asal dikekalkan */
+            background: rgba(220, 198, 176, 0.34) !important;
+            backdrop-filter: blur(16px) !important;
+            -webkit-backdrop-filter: blur(16px) !important;
 
-            /* Bayang lembut */
-            box-shadow: 0 12px 35px rgba(110, 75, 70, 0.12) !important;
-
-            /* Saiz kad */
             max-width: 420px;
             width: 100%;
             padding: 55px 30px 40px !important;
-
-            /* Buang animasi border */
             animation: none !important;
             transition: none;
         }
 
-        /* Paparan telefon */
         @media (max-width: 480px) {
             #cover-screen .cover-card.theme-border {
-                border-radius: 130px 130px 20px 20px !important;
+                border-radius: 140px 140px 22px 22px !important;
+                clip-path: inset(0 round 140px 140px 22px 22px);
                 padding: 45px 22px 35px !important;
+            }
+        }
+
+        @media (min-width: 768px) {
+            #cover-screen .cover-card.theme-border {
+                border-width: 32px !important;
+                border-image-width: 32px !important;
             }
         }
 
@@ -788,9 +789,9 @@
                 </p>
 
                 <div class="flex items-center justify-center py-4">
-                    <span class="h-px w-12 bg-[#d9c5c5]"></span><span class="h-px w-12 bg-[#d9c5c5]"></span>
-                    <p class="font-serif-luxury text-2xl italic text-[#b76e79] font-light px-4">&amp;</p>
-                    <span class="h-px w-12 bg-[#d9c5c5]"></span><span class="h-px w-12 bg-[#d9c5c5]"></span>
+                    <span class="h-px w-12 bg-[#5c5050]"></span><span class="h-px w-12 bg-[#5c5050]"></span>
+                    <p class="font-serif-luxury text-2xl italic text-[#5c5050] font-light px-4">&amp;</p>
+                    <span class="h-px w-12 bg-[#5c5050]"></span><span class="h-px w-12 bg-[#5c5050]"></span>
                 </div>
 
                 <h2 class="font-cursive text-5xl md:text-6xl text-[#3e3535]">Maryam</h2>
@@ -809,49 +810,49 @@
         <!-- Date & Countdown Walimatul Urus Maria Section -->
         <section class="reveal theme-border rounded-2xl text-center space-y-6">
             <div class="space-y-3">
-                <p class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">walimatul urus</p>
+                <p class="text-[12px] uppercase tracking-[0.3em] text-[#5c5050] font-medium">walimatul urus</p>
             </div>
-            <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">(Kediaman Pengantin Perempuan)
+            <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#5c5050] font-medium">(Kediaman Pengantin Perempuan)
             </h3>
 
             <div class="space-y-1.5 py-3">
-                <h3 class="font-serif-luxury text-2xl tracking-[0.2em] text-[#4a3e3d] uppercase font-medium">SABTU</h3>
+                <h3 class="font-serif-luxury text-2xl tracking-[0.2em] text-[#5c5050] uppercase font-medium">SABTU</h3>
 
                 <div class="flex items-center justify-center my-2 space-x-4">
-                    <span class="h-px w-10 bg-[#d9c5c5]"></span>
-                    <p class="font-serif-luxury text-3xl md:text-4xl text-rosegold font-normal tracking-wide">
+                    <span class="h-px w-10 bg-[#5c5050]"></span>
+                    <p class="font-serif-luxury text-3xl md:text-4xl text-[#5c5050] font-normal tracking-wide">
                         5 Disember 2026
                     </p>
-                    <span class="h-px w-10 bg-[#d9c5c5]"></span>
+                    <span class="h-px w-10 bg-[#5c5050]"></span>
                 </div>
             </div>
 
             <div class="flex items-center justify-center my-3 opacity-60">
-                <i class="far fa-clock text-sm text-[#b76e79]"></i>
+                <i class="far fa-clock text-sm text-[#5c5050]"></i>
             </div>
 
             <div class="grid grid-cols-4 gap-3 max-w-sm mx-auto my-6">
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="days" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
-                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Hari</span>
+                    <span class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Hari</span>
                 </div>
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="hours" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
-                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Jam</span>
+                    <span class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Jam</span>
                 </div>
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="minutes" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
                     <span
-                        class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Minit</span>
+                        class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Minit</span>
                 </div>
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="seconds" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
-                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Saat</span>
+                    <span class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Saat</span>
                 </div>
             </div>
 
             <button onclick="addToCalendar()"
-                class="inline-flex items-center text-xs text-[#8a7070] hover:text-[#b76e79] transition-colors font-medium bg-white/50 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/60 hover:bg-white/70 shadow-sm mt-2 uppercase tracking-wide">
+                class="inline-flex items-center text-xs text-[#4a3e3d] hover:text-[#b76e79] transition-colors font-medium bg-white/50 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/60 hover:bg-white/70 shadow-sm mt-2 uppercase tracking-wide">
                 <i class="far fa-calendar-plus mr-2 text-[#b76e79]"></i> Simpan ke Kalendar
             </button>
         </section>
@@ -859,53 +860,53 @@
         <!-- Majlis Sambut Tetamu Section -->
         <section class="reveal theme-border rounded-2xl text-center space-y-6">
             <div class="space-y-3">
-                <p class="text-[11px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">
+                <p class="text-[11px] uppercase tracking-[0.3em] text-[#5c5050] font-medium">
                     Majlis Sambut Menantu
                 </p>
-                <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">(Kediaman Pengantin
+                <h3 class="text-[12px] uppercase tracking-[0.3em] text-[#5c5050] font-medium">(Kediaman Pengantin
                     Lelaki)</h3>
 
                 <div class="space-y-1.5 py-3">
-                    <h3 class="font-serif-luxury text-2xl tracking-[0.2em] text-[#4a3e3d] uppercase font-medium">
+                    <h3 class="font-serif-luxury text-2xl tracking-[0.2em] text-[#5c5050] uppercase font-medium">
                         SELASA
                     </h3>
 
                     <div class="flex items-center justify-center my-2 space-x-4">
-                        <span class="h-px w-10 bg-[#d9c5c5]"></span>
-                        <p class="font-serif-luxury text-3xl md:text-4xl text-rosegold font-normal tracking-wide">
+                        <span class="h-px w-10 bg-[#5c5050]"></span>
+                        <p class="font-serif-luxury text-3xl md:text-4xl text-[#5c5050] font-normal tracking-wide">
                             8 Disember 2026
                         </p>
-                        <span class="h-px w-10 bg-[#d9c5c5]"></span>
+                        <span class="h-px w-10 bg-[#5c5050]"></span>
                     </div>
                 </div>
             </div>
 
             <div class="flex items-center justify-center my-3 opacity-60">
-                <i class="far fa-clock text-sm text-[#b76e79]"></i>
+                <i class="far fa-clock text-sm text-[#5c5050]"></i>
             </div>
 
             <div class="grid grid-cols-4 gap-3 max-w-sm mx-auto my-6">
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="days2" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
-                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Hari</span>
+                    <span class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Hari</span>
                 </div>
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="hours2" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
-                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Jam</span>
+                    <span class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Jam</span>
                 </div>
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="minutes2" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
                     <span
-                        class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Minit</span>
+                        class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Minit</span>
                 </div>
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
                     <span id="seconds2" class="block text-2xl font-serif-luxury text-[#4a3e3d]">00</span>
-                    <span class="text-[9px] uppercase text-[#8a7070] font-medium tracking-widest mt-1 block">Saat</span>
+                    <span class="text-[9px] uppercase text-[#4a3e3d] font-medium tracking-widest mt-1 block">Saat</span>
                 </div>
             </div>
 
             <button onclick="addToCalendar2()"
-                class="inline-flex items-center text-xs text-[#8a7070] hover:text-[#b76e79] transition-colors font-medium bg-white/50 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/60 hover:bg-white/70 shadow-sm mt-2 uppercase tracking-wide">
+                class="inline-flex items-center text-xs text-[#4a3e3d] hover:text-[#b76e79] transition-colors font-medium bg-white/50 backdrop-blur-sm px-5 py-2.5 rounded-full border border-white/60 hover:bg-white/70 shadow-sm mt-2 uppercase tracking-wide">
                 <i class="far fa-calendar-plus mr-2 text-[#b76e79]"></i>
                 Simpan ke Kalendar
             </button>
@@ -914,8 +915,8 @@
         <!-- GALLERY SECTION -->
         <section class="reveal theme-border rounded-2xl">
             <div class="text-center mb-6">
-                <p class="text-[16px] uppercase tracking-[0.3em] text-[#8a7070] font-medium">GALERI</p>
-                <div class="h-px w-8 bg-[#d9c5c5] mx-auto mt-3"></div>
+                <p class="text-[16px] uppercase tracking-[0.3em] text-[#4a3e3d] font-medium">GALERI</p>
+                <div class="h-px w-8 bg-[#5c5050] mx-auto mt-3"></div>
             </div>
 
             <div class="relative w-full overflow-hidden pb-2">
@@ -953,14 +954,14 @@
         </section>
 
         <!-- Footer -->
-        <footer class="text-center py-10 text-xs text-[#8a7070] space-y-3 relative">
+        <footer class="text-center py-10 text-xs text-[#4a3e3d] space-y-3 relative">
             <div class="flex justify-center items-center space-x-3 mb-4">
                 <span class="h-px w-8 bg-[#d9c5c5]"></span>
                 <i class="fas fa-heart text-[10px] text-[#b76e79]"></i>
                 <span class="h-px w-8 bg-[#d9c5c5]"></span>
             </div>
             <p class="font-cursive text-4xl text-[#4a3e3d] drop-shadow-sm">Zulhilmi &amp; Maryam</p>
-            <p class="tracking-[0.2em] uppercase text-[9px] text-[#8a7070] font-medium pt-6">Terima Kasih</p>
+            <p class="tracking-[0.2em] uppercase text-[9px] text-[#4a3e3d] font-medium pt-6">Terima Kasih</p>
         </footer>
     </div>
 
@@ -1277,8 +1278,7 @@
                     tentatif: [
                         { time: "09:00 AM", detail: "Majlis Akad Nikah" },
                         { time: "11:00 AM", detail: "Kehadiran Tetamu" },
-                        { time: "12:00 PM", detail: "Ketibaan Pengantin" },
-                        { time: "01:00 PM", detail: "Bacaan Doa Kesyukuran" },
+                        { time: "12:00 PM", detail: ["Ketibaan Pengantin", "Bacaan Doa", "Jamuan Makan"] },
                         { time: "05:00 PM", detail: "Majlis Selesai" }
                     ]
                 },
@@ -1286,8 +1286,7 @@
                     title: "Majlis Pihak Lelaki (8 Dis)",
                     tentatif: [
                         { time: "11:00 AM", detail: "Kehadiran Tetamu" },
-                        { time: "12:30 PM", detail: "Ketibaan Pengantin" },
-                        { time: "01:00 PM", detail: "Jamuan Makan" },
+                        { time: "12:00 PM", detail: ["Ketibaan Pengantin", "Bacaan Doa", "Jamuan Makan"] },
                         { time: "05:00 PM", detail: "Majlis Selesai" }
                     ]
                 }
@@ -1446,32 +1445,55 @@
                     </div>
                 </div>`;
             }
-            else if (type === 'masa') {
-                title = 'Aturcara Majlis';
-                iconHtml = '<i class="fas fa-clipboard-list"></i>';
-                htmlContent = `
-                <div class="space-y-6 text-left">
-                    ${INVITATION_CONFIG.masa.map((majlis, index) => `
-                        <div class="${index > 0 ? 'border-t border-[#e8d5d5] pt-5' : ''}">
-                            <p class="text-[11px] uppercase tracking-widest text-[#b76e79] font-bold mb-4 text-center">
-                                ${majlis.title}
-                            </p>
-                            <div class="space-y-3 relative mt-2">
-                                <div class="absolute left-[15px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#e8d5d5] to-transparent rounded-full"></div>
-                                ${majlis.tentatif.map(item => `
-                                    <div class="relative pl-10 pr-2 py-1.5">
-                                        <div class="absolute left-[11px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] bg-[#b76e79] rounded-full border-2 border-white shadow-sm z-10"></div>
-                                        <div class="bg-white/80 p-3.5 rounded-xl border border-white shadow-sm hover:shadow transition-shadow">
-                                            <span class="block font-bold text-[#9c5c67] text-[11px] uppercase tracking-wider mb-0.5">${item.time}</span>
-                                            <span class="text-[#4a3e3d] text-sm font-medium leading-tight">${item.detail}</span>
-                                        </div>
-                                    </div>
-                                `).join('')}
+            
+else if (type === 'masa') {
+    title = 'Aturcara Majlis';
+    iconHtml = '<i class="fas fa-clipboard-list"></i>';
+    htmlContent = `
+    <div class="space-y-6 text-left">
+        ${INVITATION_CONFIG.masa.map((majlis, index) => `
+            <div class="${index > 0 ? 'border-t border-[#e8d5d5] pt-5' : ''}">
+                <p class="text-[11px] uppercase tracking-widest text-[#b76e79] font-bold mb-4 text-center">
+                    ${majlis.title}
+                </p>
+
+                <div class="space-y-3 relative mt-2">
+                    <div class="absolute left-[15px] top-4 bottom-4 w-[2px] bg-gradient-to-b from-[#e8d5d5] to-transparent rounded-full"></div>
+
+                    ${majlis.tentatif.map(item => `
+                        <div class="relative pl-10 pr-2 py-1.5">
+                            <div class="absolute left-[11px] top-1/2 -translate-y-1/2 w-[10px] h-[10px] bg-[#b76e79] rounded-full border-2 border-white shadow-sm z-10"></div>
+
+                            <div class="bg-white/80 p-3.5 rounded-xl border border-white shadow-sm hover:shadow transition-shadow">
+
+                                <span class="block font-bold text-[#9c5c67] text-[11px] uppercase tracking-wider mb-0.5">
+                                    ${item.time}
+                                </span>
+
+                                ${Array.isArray(item.detail)
+                                    ? `
+                                        <ul class="list-disc pl-5 mt-2 space-y-1 text-[#4a3e3d] text-sm font-medium leading-relaxed">
+                                            ${item.detail.map(detail => `
+                                                <li>${detail}</li>
+                                            `).join('')}
+                                        </ul>
+                                      `
+                                    : `
+                                        <span class="text-[#4a3e3d] text-sm font-medium leading-tight">
+                                            ${item.detail}
+                                        </span>
+                                      `
+                                }
+
                             </div>
                         </div>
                     `).join('')}
-                </div>`;
-            }
+                </div>
+            </div>
+        `).join('')}
+    </div>`;
+}
+
 
             clearTimeout(modalHideTimeout);
             modalTitle.innerText = title;
