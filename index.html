@@ -4,20 +4,27 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Walimatul Urus | Zulhilmi & Maryam</title>
+    <title>Jemputan Walimatul Urus & Majlis Sambut Menantu | Zulhilmi &amp; Maryam</title>
+    <meta name="description" content="Jemputan khas ke Majlis Walimatul Urus Zulhilmi &amp; Maryam pada 5 Disember 2026 dan Majlis Sambut Menantu pada 8 Disember 2026. Kehadiran dan doa restu anda amat dihargai.">
+    <meta name="theme-color" content="#f7efe9">
 
-    <!-- Open Graph: WhatsApp Link Preview -->
+    <!-- Open Graph: paparan kongsi WhatsApp, Facebook dan Telegram -->
     <meta property="og:type" content="website">
     <meta property="og:locale" content="ms_MY">
-    <meta property="og:title" content="Walimatulurus | Zulhilmi & Maryam">
-    <meta property="og:description"
-        content="Jemputan ke Majlis Perkahwinan Zulhilmi & Maryam pada Sabtu, 5 Disember 2026.">
+    <meta property="og:site_name" content="Kad Jemputan Zulhilmi &amp; Maryam">
+    <meta property="og:title" content="Jemputan Walimatul Urus &amp; Majlis Sambut Menantu | Zulhilmi &amp; Maryam">
+    <meta property="og:description" content="Dengan penuh kesyukuran, kami menjemput anda seisi keluarga ke Walimatul Urus pada Sabtu, 5 Disember 2026 dan Majlis Sambut Menantu pada Selasa, 8 Disember 2026. Kehadiran serta doa restu anda amat kami hargai.">
     <meta property="og:url" content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/">
-    <meta property="og:image" content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg">
+    <meta property="og:image" content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg?v=20261104">
+    <meta property="og:image:secure_url" content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg?v=20261104">
+    <meta property="og:image:alt" content="Jemputan perkahwinan Zulhilmi dan Maryam — Walimatul Urus 5 Disember 2026 dan Sambut Menantu 8 Disember 2026">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
     <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Jemputan Perkahwinan Zulhilmi &amp; Maryam">
+    <meta name="twitter:description" content="5 Disember 2026 — Walimatul Urus | 8 Disember 2026 — Majlis Sambut Menantu">
+    <meta name="twitter:image" content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg?v=20261104">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -37,167 +44,138 @@
 
     <style>
         /* =========================================================
-           KEMASAN UI BARU: WARNA TEKS, TIPOGRAFI & BORDER
+           THEME 2026: MODERN ROMANTIC LUXURY (IVORY + ROSE GOLD)
            ========================================================= */
-
+        :root {
+            --ivory: #faf6f0;
+            --ink: #433630;
+            --ink-soft: #66534c;
+            --rose: #a46b69;
+            --rose-deep: #805052;
+            --champagne: #b9956f;
+            --gold-line: rgba(167, 130, 95, .44);
+            --glass: rgba(255, 252, 248, .88);
+        }
+        html { scroll-behavior: smooth; }
         body {
             font-family: 'Poppins', sans-serif;
-            color: #352A2A; 
+            color: var(--ink);
+            background: #f7eee8;
             overflow-x: hidden;
-            background-color: #fdfbf7;
+            -webkit-font-smoothing: antialiased;
         }
-
-        /* --- PENAMBAHBAIKAN WARNA TEKS --- */
+        p { line-height: 1.78; }
+        .font-serif-luxury { font-family: 'Playfair Display', Georgia, serif; letter-spacing: .025em; }
+        .font-cursive { font-family: 'Great Vibes', cursive; line-height: 1.23; }
         .text-\[\#5c5050\], .text-\[\#706464\], .text-\[\#4a3e3d\], .text-\[\#3e3535\] {
-            color: #352A2A !important; 
+            color: var(--ink) !important;
         }
-        
         .text-\[\#8a7070\], .text-\[\#9c7a7e\] {
-            color: #8B5A53 !important; 
-            font-weight: 500;
-            letter-spacing: 0.15em;
+            color: var(--ink-soft) !important;
         }
+        .text-\[\#b76e79\] { color: var(--rose-deep) !important; }
+        .bg-\[\#d9c5c5\] { background-color: #d4b8ad !important; }
 
-        .text-\[\#b76e79\] {
-            color: #B76E79 !important; 
-        }
-
-        .bg-\[\#d9c5c5\] {
-            background-color: #D4B5B0 !important; 
-        }
-
-        /* --- KEMASAN TIPOGRAFI --- */
-        .font-serif-luxury {
-            font-family: 'Playfair Display', serif;
-            letter-spacing: 0.03em;
-        }
-
-        .font-cursive {
-            font-family: 'Great Vibes', cursive;
-            text-shadow: 1px 1px 2px rgba(183, 110, 121, 0.15); 
-        }
-
-        p {
-            line-height: 1.8 !important;
-        }
-
-        /* --- KEMASAN BORDER & KACA PREMIUM (.theme-border) --- */
+        /* Bingkai mewah: nipis, kemas, bukan imej border yang berat */
         .theme-border {
-            border-style: solid;
-            border-width: 20px; 
-            border-color: transparent;
-            border-image-width: 20px;
-
-            /* Image Border */
-            border-image-source: url('./border.jpg');
-            border-image-slice: 60;
-            border-image-repeat: round; 
-
-            /* Premium Glass Effect yang diperjelas */
-            background-color: rgba(255, 252, 248, 0.90) !important;
-            backdrop-filter: blur(14px) !important;
-            -webkit-backdrop-filter: blur(14px) !important;
-
-            /* Shadow asal (hanya dikekalkan untuk elemen selain section) */
-            box-shadow:
-                0 15px 40px rgba(139, 90, 83, 0.12),
-                inset 0 0 0 1px rgba(255, 255, 255, 0.7) !important;
-
             position: relative;
-            transition: transform 0.3s ease;
-            padding: 2.5rem 1.5rem !important; 
+            border: 1px solid var(--gold-line);
+            border-radius: 27px;
+            background: linear-gradient(147deg, rgba(255,255,255,.93), rgba(255,250,245,.86)) !important;
+            -webkit-backdrop-filter: blur(16px) saturate(120%);
+            backdrop-filter: blur(16px) saturate(120%);
+            box-shadow: 0 18px 58px rgba(96,57,55,.10),
+                        0 2px 12px rgba(96,57,55,.045),
+                        inset 0 1px 0 rgba(255,255,255,.9);
+            padding: 2.65rem 1.75rem !important;
+            transition: box-shadow .35s ease, transform .35s ease;
         }
-
-        /* === KEMASAN BARU: BUCU BORDER MEMBULAT UNTUK KOTAK KANDUNGAN === */
-        section.theme-border {
-            border-radius: 24px !important;
-            
-            /* Trik clip-path: Memaksa border-image terpotong melengkung di setiap bucu */
-            clip-path: inset(0 round 24px); 
-            
-            /* Gantikan outer box-shadow dengan drop-shadow filter supaya 
-               bayang tidak hilang selepas elemen dikerat oleh clip-path */
-            box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.7) !important;
-            filter: drop-shadow(0 15px 25px rgba(139, 90, 83, 0.15));
+        section.theme-border::before {
+            content: '';
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(183,146,112,.26);
+            border-radius: 19px;
+            pointer-events: none;
         }
-
-        /* Desktop Border Khas */
-        @media (min-width: 768px) {
-            .theme-border {
-                border-width: 32px;
-                border-image-width: 32px;
-                padding: 3.5rem 3rem !important; 
-            }
-            
-            /* Bucu bulat lebih besar dan kemas di PC */
-            section.theme-border {
-                border-radius: 36px !important;
-                clip-path: inset(0 round 36px);
-            }
+        section.theme-border::after {
+            content: '✦';
+            position: absolute;
+            top: 12px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #ad8a69;
+            opacity: .48;
+            font-size: 11px;
+            pointer-events: none;
         }
-
-        .theme-border:hover {
-            transform: translateY(-2px);
-        }
-
-        /* Warna Tajuk/Teks di dalam Border */
-        .theme-border h1,
-        .theme-border h2,
-        .theme-border h3 {
-            color: #8B5A53;
-        }
-
-        .theme-border p {
-            color: #4A3B3B;
-        }
-
-        .theme-border span,
-        .theme-border label {
-            color: #7A5C58;
-        }
-
-        /* --- BUTANG & PAUTAN --- */
+        .theme-border h1, .theme-border h2, .theme-border h3 { color: var(--rose-deep); }
+        .theme-border p { color: var(--ink-soft); }
+        .theme-border .font-cursive { color: #845052 !important; }
+        .theme-border .text-sm { font-size: .94rem; }
+        .theme-border .text-xs { font-size: .79rem; }
+        .theme-border:hover { box-shadow: 0 22px 60px rgba(96,57,55,.13), 0 3px 14px rgba(96,57,55,.05); }
+        #main-content { padding-top: 2.2rem; padding-bottom: 2rem; }
+        #main-content > section { isolation: isolate; }
         .cover-open-btn {
-            background: linear-gradient(135deg, #B76E79, #9C5C67) !important;
-            box-shadow: 0 10px 25px rgba(156, 92, 103, 0.35) !important;
-            letter-spacing: 0.1em;
+            background: linear-gradient(135deg, #a86c70 0%, #855154 100%) !important;
+            border: 1px solid rgba(255,255,255,.7) !important;
+            color: #fff;
+            box-shadow: 0 12px 28px rgba(125,78,81,.26) !important;
+            letter-spacing: .07em;
             text-transform: uppercase;
         }
+        .cover-open-btn:focus-visible, button:focus-visible, a:focus-visible,
+        input:focus-visible, select:focus-visible {
+            outline: 3px solid rgba(169,110,110,.65);
+            outline-offset: 3px;
+        }
+        @media (min-width:768px) {
+            .theme-border { padding: 3.5rem 3.2rem !important; border-radius: 34px; }
+            section.theme-border::before { border-radius: 26px; inset: 10px; }
+        }
+        @media (max-width:480px) {
+            .theme-border { padding: 2.25rem 1.25rem !important; border-radius: 23px; }
+            section.theme-border::before { border-radius: 15px; inset: 7px; }
+        }
 
-        /* =========================================================
-           KOD ASAL DIKEKALKAN SEPENUHNYA DI BAWAH
-           ========================================================= */
-
-        /* Latar Belakang Ken Burns (Animasi Premium) */
+        /* Latar tanpa fail luaran: lapisan bergradasi, tidak mengaburkan teks */
         .bg-ken-burns {
             position: fixed;
-            inset: -5%; /* Lebihkan sedikit ruang untuk animasi bergerak */
-            width: 110%;
-            height: 110%;
-            background-image: url('https://www.celebrare.mx/espacios/jardines.png?dpl=dpl_5Yo4WAEHYNESzcqUg3JeS57HSGhV');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            background-color: rgba(255, 248, 240, 0.25);
-            background-blend-mode: soft-light;
+            inset: -5%;
             z-index: -3;
-            animation: kenBurns 25s ease-in-out infinite alternate;
+            pointer-events: none;
+            background:
+                radial-gradient(ellipse 49% 38% at 9% 12%, rgba(216,159,157,.36), transparent 76%),
+                radial-gradient(ellipse 45% 48% at 98% 79%, rgba(207,164,143,.28), transparent 77%),
+                radial-gradient(ellipse 48% 45% at 79% 0%, rgba(237,208,185,.30), transparent 76%),
+                linear-gradient(145deg, #fcf8f4 0%, #f4e7e1 51%, #fcfaf5 100%);
+            animation: backdropDrift 30s ease-in-out infinite alternate;
         }
-
-        @keyframes kenBurns {
-            0% { transform: scale(1) translate(0, 0); }
-            100% { transform: scale(1.08) translate(-1%, -1%); }
+        .bg-ken-burns::before, .bg-ken-burns::after {
+            content: '';
+            position: absolute;
+            width: min(64vw, 540px);
+            aspect-ratio: 1;
+            border: 1px solid rgba(175,131,107,.18);
+            border-radius: 50%;
+            filter: blur(.25px);
         }
-
-        /* Lapisan nipis (overlay) pada gambar supaya teks gelap amat mudah dibaca */
+        .bg-ken-burns::before { left: -24vw; top: -18vw; box-shadow: 0 0 0 24px rgba(191,152,126,.032), 0 0 0 54px rgba(191,152,126,.025); }
+        .bg-ken-burns::after { right: -25vw; bottom: -19vw; box-shadow: 0 0 0 24px rgba(191,152,126,.032), 0 0 0 54px rgba(191,152,126,.025); }
+        @keyframes backdropDrift {
+            from { transform: scale(1) translate3d(0,0,0); }
+            to { transform: scale(1.045) translate3d(-.5%, .5%, 0); }
+        }
         .bg-overlay {
             position: fixed;
             inset: 0;
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.45) 0%, rgba(255, 241, 245, 0.55) 100%);
-            backdrop-filter: blur(4px);
-            -webkit-backdrop-filter: blur(4px);
-            pointer-events: none;
             z-index: -2;
+            pointer-events: none;
+            background:
+                repeating-linear-gradient(118deg, rgba(255,255,255,.04) 0 1px, transparent 1px 23px),
+                linear-gradient(180deg, rgba(255,255,255,.06), rgba(249,240,232,.09));
+            /* Blur hanya pada kad, BUKAN pada seluruh latar */
         }
 
         /* Reveal animations on scroll */
@@ -483,6 +461,94 @@
                 transition: none !important;
             }
         }
+
+        /* Penalaan akhir rupa premium */
+        #cover-screen {
+            background: linear-gradient(150deg, rgba(252,248,243,.63), rgba(244,228,221,.50));
+            backdrop-filter: blur(7px);
+            -webkit-backdrop-filter: blur(7px);
+        }
+        .cover-card {
+            border-radius: 180px 180px 26px 26px !important;
+            max-width: 27rem;
+            width: 100%;
+            background: linear-gradient(160deg, rgba(255,255,255,.95), rgba(255,249,242,.88)) !important;
+            border: 1px solid rgba(180,143,109,.55) !important;
+            box-shadow: 0 25px 70px rgba(94,58,52,.14), inset 0 0 0 8px rgba(255,255,255,.31);
+            overflow: hidden;
+        }
+        .cover-card::before {
+            content: '';
+            position: absolute;
+            inset: 9px;
+            border: 1px solid rgba(188,151,119,.38);
+            border-radius: 175px 175px 20px 20px;
+            pointer-events: none;
+        }
+        .cover-card .cover-content { position: relative; z-index: 3; }
+        #cover-screen .cover-flower { opacity: .43; }
+        .cover-divider::before, .cover-divider::after { background: linear-gradient(90deg, transparent, #ae866f); }
+        .text-rosegold {
+            background-image: linear-gradient(120deg, #805052, #a67d5c 53%, #805052);
+        }
+        #bottom-nav > div {
+            background: rgba(255,250,245,.95) !important;
+            border: 1px solid rgba(185,149,120,.38);
+            box-shadow: 0 -8px 25px rgba(84,58,51,.09);
+            -webkit-backdrop-filter: blur(18px);
+            backdrop-filter: blur(18px);
+        }
+        #bottom-nav button { min-height: 53px; }
+        #bottom-nav button span { color: #5d4a44 !important; font-size: 10px; }
+        #audio-control { background: rgba(255,250,245,.94) !important; border-color: rgba(185,149,120,.48) !important; }
+        .modal-glass {
+            background: rgba(255,252,248,.96);
+            border: 1px solid rgba(184,145,113,.47);
+            border-radius: 26px;
+            -webkit-backdrop-filter: blur(22px);
+            backdrop-filter: blur(22px);
+            box-shadow: 0 24px 64px rgba(50,35,31,.23);
+        }
+        #modal-container label { color: #654e48 !important; }
+        #modal-container input, #modal-container select { background: #fffdfa; color: #3f302d; border: 1px solid #dcc8bb; }
+        #modal-container input::placeholder { color: #85756e; }
+        .gallery-slide img { border-radius: 15px; }
+        .gallery-dot { background: rgba(171,132,114,.27); border-color: rgba(171,132,114,.5); }
+        .gallery-dot.active { background: #986766; border-color: #986766; }
+        .majlis-time {
+            display: inline-flex;
+            gap: .55rem;
+            align-items: center;
+            justify-content: center;
+            color: #664c43 !important;
+            font-family: 'Poppins', sans-serif;
+            font-size: .94rem !important;
+            font-weight: 500;
+            background: rgba(255,255,255,.72);
+            border: 1px solid rgba(180,143,109,.32);
+            border-radius: 100px;
+            padding: .52rem 1.05rem;
+        }
+        .majlis-time i { color: #946867; }
+        #main-content .grid.grid-cols-4 > div {
+            background: rgba(255,255,255,.72) !important;
+            border: 1px solid rgba(180,143,109,.28) !important;
+            border-radius: 15px;
+            box-shadow: 0 5px 18px rgba(113,72,63,.055);
+        }
+        @media (max-width:480px) {
+            .cover-card { padding: 3.4rem 1.55rem !important; border-radius: 145px 145px 24px 24px !important; }
+            .cover-card::before { border-radius: 140px 140px 17px 17px; }
+            #main-content { padding-left: 12px; padding-right: 12px; }
+            #main-content .grid.grid-cols-4 { gap: .45rem; }
+            #main-content .grid.grid-cols-4 > div { padding: .65rem .25rem; }
+            .theme-border .text-sm { font-size: .91rem; }
+            .majlis-time { font-size: .85rem !important; }
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .bg-ken-burns { animation: none !important; }
+            html { scroll-behavior: auto; }
+        }
     </style>
 </head>
 
@@ -539,7 +605,7 @@
     </div>
 
     <!-- Premium Animated Wedding Cover -->
-    <div id="cover-screen">
+    <div id="cover-screen" aria-label="Sampul kad jemputan digital">
         <div class="cover-light"></div>
         <div class="cover-flower f1">🌸</div>
         <div class="cover-flower f2">✿</div>
@@ -664,9 +730,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-center my-3 opacity-60">
-                <i class="far fa-clock text-sm text-[#b76e79]"></i>
-            </div>
+            <p class="majlis-time"><i class="far fa-clock" aria-hidden="true"></i> 9.00 pagi – 5.00 petang</p>
 
             <div class="grid grid-cols-4 gap-3 max-w-sm mx-auto my-6">
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
@@ -716,9 +780,7 @@
                 </div>
             </div>
 
-            <div class="flex items-center justify-center my-3 opacity-60">
-                <i class="far fa-clock text-sm text-[#b76e79]"></i>
-            </div>
+            <p class="majlis-time"><i class="far fa-clock" aria-hidden="true"></i> 11.00 pagi – 5.00 petang</p>
 
             <div class="grid grid-cols-4 gap-3 max-w-sm mx-auto my-6">
                 <div class="bg-white/40 backdrop-blur-md p-3 rounded-lg border border-white/50 shadow-sm">
@@ -904,8 +966,8 @@
                         if (bottomNav) bottomNav.classList.remove('hidden');
                         initReveal();
 
-                        // Jalankan Auto Scroll 
-                        initElegantAutoScroll();
+                        // Biarkan tetamu skrol sendiri dengan selesa.
+                        // Auto-scroll lama dimatikan untuk pengalaman membaca lebih baik.
 
                     }, 400);
 
@@ -950,7 +1012,7 @@
                 }
             };
 
-            const countDownDate = new Date("2026-12-05T09:00:00").getTime();
+            const countDownDate = new Date("2026-12-05T09:00:00+08:00").getTime();
 
             const timerX = setInterval(function () {
                 const now = new Date().getTime();
@@ -1393,7 +1455,7 @@
             if (scriptURL.includes('XXXXXXXXXXXX') || !scriptURL.startsWith('http')) {
                 setTimeout(() => {
                     closeModal();
-                    Swal.fire({ title: 'Terima Kasih!', text: 'RSVP berjaya (Mod Demo). Sila letak link Google Script sebenar.', icon: 'success', confirmButtonColor: '#b76e79' });
+                    Swal.fire({ title: 'Terima Kasih!', text: 'Borang percubaan dihantar. Sila sambungkan Google Apps Script sebenar.', icon: 'success', confirmButtonColor: '#b76e79' });
                 }, 800);
                 return;
             }
@@ -1408,7 +1470,7 @@
             fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
                 .then(() => {
                     closeModal();
-                    Swal.fire({ title: 'Terima Kasih!', text: 'Pengesahan RSVP anda telah direkodkan.', icon: 'success', confirmButtonColor: '#b76e79' });
+                    Swal.fire({ title: 'Terima Kasih!', text: 'Permintaan RSVP telah dihantar. Jika perlu, sila sahkan dengan pihak penganjur.', icon: 'success', confirmButtonColor: '#b76e79' });
                 })
                 .catch(() => {
                     closeModal();
@@ -1455,7 +1517,7 @@
 
         window.addToCalendar2 = function () {
             const text = "Majlis Sambut Menantu Zulhilmi & Maryam";
-            const dates = "20261208T010000Z/20261208T090000Z";
+            const dates = "20261208T030000Z/20261208T090000Z";
             const details = "Majlis Sambut Menantu (Pihak Lelaki).";
             const location = "Kediaman Pengantin Lelaki";
             const gCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${encodeURIComponent(text)}&dates=${dates}&details=${encodeURIComponent(details)}&location=${encodeURIComponent(location)}`;
@@ -1465,7 +1527,7 @@
     </script>
     <script>
         function updateCountdown2() {
-            const targetDate = new Date("December 8, 2026 00:00:00").getTime();
+            const targetDate = new Date("2026-12-08T11:00:00+08:00").getTime();
             const now = new Date().getTime();
             const distance = targetDate - now;
 
