@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jemputan Walimatul Urus & Majlis Sambut Menantu | Zulhilmi &amp; Maryam</title>
     <meta name="description"
-        content="Jemputan khas ke Majlis Walimatul Urus Zulhilmi &amp; Maryam pada 5 Disember 2026 dan Majlis Sambut Menantu pada 8 Disember 2026. Kehadiran dan doa restu anda amat dihargai.">
+        content="Tekan link untuk lihat jemputan">
     <meta name="theme-color" content="#f7efe9">
 
     <!-- Open Graph: paparan kongsi WhatsApp, Facebook dan Telegram -->
@@ -15,12 +15,12 @@
     <meta property="og:site_name" content="Kad Jemputan Zulhilmi &amp; Maryam">
     <meta property="og:title" content="Jemputan Walimatul Urus &amp; Majlis Sambut Menantu | Zulhilmi &amp; Maryam">
     <meta property="og:description"
-        content="Dengan penuh kesyukuran, kami menjemput anda seisi keluarga ke Walimatul Urus pada Sabtu, 5 Disember 2026 dan Majlis Sambut Menantu pada Selasa, 8 Disember 2026. Kehadiran serta doa restu anda amat kami hargai.">
+        content="Tekan link untuk lihat jemputan">
     <meta property="og:url" content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/">
     <meta property="og:image"
-        content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg?v=20261104">
+        content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg?v=20261105">
     <meta property="og:image:secure_url"
-        content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg?v=20261104">
+        content="https://zhlmiijt-code.github.io/walimatulurus-zul-maria/thumbnail.jpg?v=20261105">
     <meta property="og:image:alt"
         content="Jemputan perkahwinan Zulhilmi dan Maryam — Walimatul Urus 5 Disember 2026 dan Sambut Menantu 8 Disember 2026">
     <meta property="og:image:width" content="1200">
@@ -29,7 +29,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Jemputan Perkahwinan Zulhilmi &amp; Maryam">
     <meta name="twitter:description"
-        content="5 Disember 2026 — Walimatul Urus | 8 Disember 2026 — Majlis Sambut Menantu">
+        content="Tekan link untuk lihat jemputan">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -683,9 +683,9 @@
                 <span class="text-[10px] font-medium tracking-tight">Lokasi</span>
             </button>
             <button onclick="openModal('rsvp')"
-                class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
+                class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1" aria-label="RSVP dan Ucapan">
                 <i class="fas fa-envelope-open-text text-lg text-[#b76e79] mb-0.5"></i>
-                <span class="text-[10px] font-medium tracking-tight">RSVP</span>
+                <span class="text-[9px] font-medium tracking-tight leading-tight text-center">RSVP &amp;<br>Ucapan</span>
             </button>
             <button onclick="openModal('hadiah')"
                 class="flex flex-col items-center justify-center text-gray-500 hover:text-[#b76e79] active:scale-95 transition-all w-1/5 py-1">
@@ -962,6 +962,14 @@
             </div>
             <p class="font-cursive text-4xl text-[#4a3e3d] drop-shadow-sm">Zulhilmi &amp; Maryam</p>
             <p class="tracking-[0.2em] uppercase text-[9px] text-[#4a3e3d] font-medium pt-6">Terima Kasih</p>
+            
+<div class="mt-6 text-center">
+    <p class="text-[9px] tracking-widest text-[#8B5A53] opacity-80">
+        Designed &amp; Developed by
+        <span class="font-semibold">zhlmi.ijt</span>
+    </p>
+</div>
+
         </footer>
     </div>
 
@@ -1379,30 +1387,36 @@
                 </div>`;
             }
             else if (type === 'rsvp') {
-                title = 'Pengesahan Hadir';
+                title = 'RSVP & Ucapan';
                 iconHtml = '<i class="fas fa-envelope-open-text"></i>';
                 htmlContent = `
                 <form onsubmit="submitRSVPModal(event)" class="space-y-4 text-left">
+                    <p class="text-xs text-[#706464] text-center leading-relaxed">Sahkan kehadiran anda dan titipkan ucapan atau doa buat pengantin, jika ada.</p>
                     <div>
-                        <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Nama Penuh</label>
-                        <input type="text" id="modal-name" required class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm" placeholder="Masukkan nama anda">
+                        <label for="modal-name" class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Nama Penuh <span class="text-[#b76e79]">*</span></label>
+                        <input type="text" id="modal-name" required maxlength="120" autocomplete="name" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm" placeholder="Masukkan nama anda">
                     </div>
                     <div>
-                        <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Kehadiran</label>
-                        <select id="modal-attendance" onchange="toggleModalPax(this.value)" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm text-gray-700">
+                        <label for="modal-attendance" class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Kehadiran <span class="text-[#b76e79]">*</span></label>
+                        <select id="modal-attendance" required onchange="toggleModalPax(this.value)" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm text-gray-700">
                             <option value="Hadir">Hadir</option>
                             <option value="Tidak Hadir">Tidak Hadir</option>
                         </select>
                     </div>
                     <div id="modal-pax-container">
-                        <label class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Jumlah Kehadiran</label>
+                        <label for="modal-pax" class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Jumlah Kehadiran</label>
                         <select id="modal-pax" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm text-gray-700">
                             ${Array.from({ length: 10 }, (_, i) => `<option value="${i + 1}">${i + 1} Orang</option>`).join('')}
                         </select>
                     </div>
-                    <div class="pt-3">
-                        <button type="submit" id="modal-rsvp-btn" class="w-full bg-gradient-to-r from-[#b76e79] to-[#9c5c67] hover:opacity-90 text-white font-semibold py-3.5 rounded-xl shadow-md transition-all active:scale-[0.98] tracking-wide">
-                            Hantar RSVP
+                    <div>
+                        <label for="modal-wish" class="block text-[11px] font-semibold text-[#8a7070] uppercase tracking-wide mb-1.5 ml-1">Ucapan & Doa <span class="normal-case font-normal tracking-normal">(jika ada)</span></label>
+                        <textarea id="modal-wish" rows="4" maxlength="600" class="w-full bg-white border border-gray-200 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#b76e79]/50 transition-all shadow-sm resize-y" placeholder="Tulis ucapan atau doa untuk Zulhilmi & Maryam..."></textarea>
+                        <p class="text-[10px] text-[#8a7070] mt-1 ml-1">Pilihan sahaja — boleh dibiarkan kosong.</p>
+                    </div>
+                    <div class="pt-2">
+                        <button type="submit" id="modal-rsvp-btn" class="w-full bg-gradient-to-r from-[#b76e79] to-[#9c5c67] hover:opacity-90 text-white font-semibold py-3.5 rounded-xl shadow-md transition-all active:scale-[0.98] tracking-wide disabled:opacity-60 disabled:cursor-not-allowed">
+                            Hantar RSVP & Ucapan
                         </button>
                     </div>
                 </form>`;
@@ -1513,47 +1527,76 @@
             }
         };
 
-        window.submitRSVPModal = function (e) {
+        // Satu borang, dua tab Google Sheets: "RSVP" dan "Ucapan".
+        // Kod Apps Script sedia ada menerima Type=RSVP dan Type=Ucapan.
+        // Ucapan dihantar hanya apabila ruang ucapan diisi.
+        window.submitRSVPModal = async function (e) {
             e.preventDefault();
             const name = document.getElementById('modal-name')?.value.trim();
             const attendance = document.getElementById('modal-attendance')?.value;
             const pax = document.getElementById('modal-pax')?.value || '1';
+            const wish = document.getElementById('modal-wish')?.value.trim() || '';
             const modalRsvpBtn = document.getElementById('modal-rsvp-btn');
 
             if (!name || !attendance) {
-                Swal.fire({ text: 'Sila lengkapkan butiran RSVP.', icon: 'warning', confirmButtonColor: '#b76e79' });
+                Swal.fire({ text: 'Sila lengkapkan nama dan status kehadiran.', icon: 'warning', confirmButtonColor: '#b76e79' });
                 return;
             }
-
+            if (!scriptURL || !scriptURL.startsWith('https://script.google.com/macros/s/')) {
+                Swal.fire({ title: 'Tetapan belum lengkap', text: 'Pautan Google Apps Script tidak sah.', icon: 'error', confirmButtonColor: '#b76e79' });
+                return;
+            }
+            if (modalRsvpBtn?.disabled) return;
             if (modalRsvpBtn) {
                 modalRsvpBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Menghantar...';
                 modalRsvpBtn.disabled = true;
             }
 
-            if (scriptURL.includes('XXXXXXXXXXXX') || !scriptURL.startsWith('http')) {
-                setTimeout(() => {
-                    closeModal();
-                    Swal.fire({ title: 'Terima Kasih!', text: 'RSVP berjaya (Mod Demo). Sila letak link Google Script sebenar.', icon: 'success', confirmButtonColor: '#b76e79' });
-                }, 800);
-                return;
-            }
+            const timestamp = new Date().toLocaleString('ms-MY', { timeZone: 'Asia/Kuala_Lumpur' });
+            const postToSheet = async (fields) => {
+                const formData = new FormData();
+                Object.entries(fields).forEach(([key, value]) => formData.append(key, value));
+                // Apps Script Web App tidak menyediakan CORS untuk semakan respons biasa.
+                // mode:no-cors membenarkan hantar POST tetapi bukan membaca status simpanan.
+                await fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' });
+            };
 
-            const formData = new FormData();
-            formData.append('Type', 'RSVP');
-            formData.append('Nama', name);
-            formData.append('Kehadiran', attendance);
-            formData.append('JumlahPax', attendance === 'Tidak Hadir' ? '0' : pax);
-            formData.append('Tarikh', new Date().toLocaleString('ms-MY'));
-
-            fetch(scriptURL, { method: 'POST', body: formData, mode: 'no-cors' })
-                .then(() => {
-                    closeModal();
-                    Swal.fire({ title: 'Terima Kasih!', text: 'Pengesahan RSVP anda telah direkodkan.', icon: 'success', confirmButtonColor: '#b76e79' });
-                })
-                .catch(() => {
-                    closeModal();
-                    Swal.fire({ title: 'Ralat', text: 'Harap maaf, RSVP tidak dapat dihantar. Sila cuba lagi.', icon: 'error', confirmButtonColor: '#b76e79' });
+            let rsvpSent = false;
+            try {
+                await postToSheet({
+                    Type: 'RSVP', Tarikh: timestamp, Nama: name,
+                    Kehadiran: attendance,
+                    JumlahPax: attendance === 'Tidak Hadir' ? '0' : pax
                 });
+                rsvpSent = true;
+
+                if (wish) {
+                    await postToSheet({
+                        Type: 'Ucapan', Tarikh: timestamp, Nama: name, Ucapan: wish
+                    });
+                }
+
+                closeModal();
+                Swal.fire({
+                    title: 'Terima Kasih!',
+                    text: wish ? 'RSVP dan ucapan anda telah dihantar.' : 'RSVP anda telah dihantar.',
+                    icon: 'success', confirmButtonColor: '#b76e79'
+                });
+            } catch (error) {
+                console.error('Gagal menghantar borang:', error);
+                Swal.fire({
+                    title: 'Gangguan sambungan',
+                    text: rsvpSent
+                        ? 'RSVP telah dihantar tetapi ucapan tidak dapat dihantar. Sila semak atau cuba lagi kemudian.'
+                        : 'Borang tidak dapat dihantar. Sila periksa internet dan cuba lagi.',
+                    icon: 'error', confirmButtonColor: '#b76e79'
+                });
+            } finally {
+                if (modalRsvpBtn) {
+                    modalRsvpBtn.disabled = false;
+                    modalRsvpBtn.textContent = 'Hantar RSVP & Ucapan';
+                }
+            }
         };
 
         window.copyAccNumber = function () {
