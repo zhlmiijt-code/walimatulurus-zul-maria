@@ -702,7 +702,7 @@
 
     <!-- Premium Animated Wedding Cover -->
     <div id="cover-screen">
-            <div class="cover-flower f1">🌸</div>
+        <div class="cover-flower f1">🌸</div>
         <div class="cover-flower f2">✿</div>
         <div class="cover-flower f3">🌷</div>
         <div class="cover-flower f4">✿</div>
@@ -1445,11 +1445,11 @@
                     </div>
                 </div>`;
             }
-            
-else if (type === 'masa') {
-    title = 'Aturcara Majlis';
-    iconHtml = '<i class="fas fa-clipboard-list"></i>';
-    htmlContent = `
+
+            else if (type === 'masa') {
+                title = 'Aturcara Majlis';
+                iconHtml = '<i class="fas fa-clipboard-list"></i>';
+                htmlContent = `
     <div class="space-y-6 text-left">
         ${INVITATION_CONFIG.masa.map((majlis, index) => `
             <div class="${index > 0 ? 'border-t border-[#e8d5d5] pt-5' : ''}">
@@ -1471,19 +1471,19 @@ else if (type === 'masa') {
                                 </span>
 
                                 ${Array.isArray(item.detail)
-                                    ? `
+                        ? `
                                         <ul class="list-disc pl-5 mt-2 space-y-1 text-[#4a3e3d] text-sm font-medium leading-relaxed">
                                             ${item.detail.map(detail => `
                                                 <li>${detail}</li>
                                             `).join('')}
                                         </ul>
                                       `
-                                    : `
+                        : `
                                         <span class="text-[#4a3e3d] text-sm font-medium leading-tight">
                                             ${item.detail}
                                         </span>
                                       `
-                                }
+                    }
 
                             </div>
                         </div>
@@ -1492,7 +1492,7 @@ else if (type === 'masa') {
             </div>
         `).join('')}
     </div>`;
-}
+            }
 
 
             clearTimeout(modalHideTimeout);
@@ -1637,7 +1637,6 @@ else if (type === 'masa') {
         updateCountdowns();
         setInterval(updateCountdowns, 1000);
     </script>
-
 </body>
 
 </html>
